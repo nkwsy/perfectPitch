@@ -2,44 +2,20 @@ import serial
 import math
 import pyaudio
 import wave
+import random
+import time
 
 import sys
+#### convert aif to wav in terminal using ffmpeg by typing:
+###### for f in *.aiff; do ffmpeg -i "$f" "${f%.aiff}.wav"; done
 
 
-def playA5():
+def play(note, instrument):
 	#define stream chunk   
 	chunk = 1024  
 
 	#open a wav format music  
-	f = wave.open(r"/Users/me/projects/perfectpitch/Piano.ff.A5.wav","rb")  
-	#instantiate PyAudio  
-	p = pyaudio.PyAudio()  
-	#open stream  
-	stream = p.open(format = p.get_format_from_width(f.getsampwidth()),  
-	                channels = f.getnchannels(),  
-	                rate = f.getframerate(),  
-	                output = True)  
-	#read data  
-	data = f.readframes(chunk)  
-
-	#play stream  
-	while data:  
-	    stream.write(data)  
-	    data = f.readframes(chunk)  
-
-	#stop stream  
-	stream.stop_stream()  
-	stream.close()  
-
-	#close PyAudio  
-	p.terminate()
-
-def playB5():
-	#define stream chunk   
-	chunk = 1024  
-
-	#open a wav format music  
-	f = wave.open(r"/Users/me/projects/perfectpitch/Piano.ff.B5.wav","rb")  
+	f = wave.open(r"/Users/me/projects/perfectpitch/" + instrument + "/" + note + ".wav","rb")  
 	#instantiate PyAudio  
 	p = pyaudio.PyAudio()  
 	#open stream  
@@ -61,196 +37,102 @@ def playB5():
 
 	#close PyAudio  
 	p.terminate()  
+############# tone randomizer
+tone = ['2', '3', '4']
+note = ['A', 'B', 'C', 'D']
+instrument = []
 
-def playC5():
-	#define stream chunk   
-	chunk = 1024  
-
-	#open a wav format music  
-	f = wave.open(r"/Users/me/projects/perfectpitch/Piano.ff.C5.wav","rb")  
-	#instantiate PyAudio  
-	p = pyaudio.PyAudio()  
-	#open stream  
-	stream = p.open(format = p.get_format_from_width(f.getsampwidth()),  
-	                channels = f.getnchannels(),  
-	                rate = f.getframerate(),  
-	                output = True)  
-	#read data  
-	data = f.readframes(chunk)  
-
-	#play stream  
-	while data:  
-	    stream.write(data)  
-	    data = f.readframes(chunk)  
-
-	#stop stream  
-	stream.stop_stream()  
-	stream.close()  
-
-	#close PyAudio  
-	p.terminate()  
-
-def playD5():
-	#define stream chunk   
-	chunk = 1024  
-
-	#open a wav format music  
-	f = wave.open(r"/Users/me/projects/perfectpitch/Piano.ff.D5.wav","rb")  
-	#instantiate PyAudio  
-	p = pyaudio.PyAudio()  
-	#open stream  
-	stream = p.open(format = p.get_format_from_width(f.getsampwidth()),  
-	                channels = f.getnchannels(),  
-	                rate = f.getframerate(),  
-	                output = True)  
-	#read data  
-	data = f.readframes(chunk)  
-
-	#play stream  
-	while data:  
-	    stream.write(data)  
-	    data = f.readframes(chunk)  
-
-	#stop stream  
-	stream.stop_stream()  
-	stream.close()  
-
-	#close PyAudio  
-	p.terminate()  
-
-def playE5():
-	#define stream chunk   
-	chunk = 1024  
-
-	#open a wav format music  
-	f = wave.open(r"/Users/me/projects/perfectpitch/Piano.ff.E5.wav","rb")  
-	#instantiate PyAudio  
-	p = pyaudio.PyAudio()  
-	#open stream  
-	stream = p.open(format = p.get_format_from_width(f.getsampwidth()),  
-	                channels = f.getnchannels(),  
-	                rate = f.getframerate(),  
-	                output = True)  
-	#read data  
-	data = f.readframes(chunk)  
-
-	#play stream  
-	while data:  
-	    stream.write(data)  
-	    data = f.readframes(chunk)  
-
-	#stop stream  
-	stream.stop_stream()  
-	stream.close()  
-
-	#close PyAudio  
-	p.terminate()  
-
-def playF5():
-	#define stream chunk   
-	chunk = 1024  
-
-	#open a wav format music  
-	f = wave.open(r"/Users/me/projects/perfectpitch/Piano.ff.F5.wav","rb")  
-	#instantiate PyAudio  
-	p = pyaudio.PyAudio()  
-	#open stream  
-	stream = p.open(format = p.get_format_from_width(f.getsampwidth()),  
-	                channels = f.getnchannels(),  
-	                rate = f.getframerate(),  
-	                output = True)  
-	#read data  
-	data = f.readframes(chunk)  
-
-	#play stream  
-	while data:  
-	    stream.write(data)  
-	    data = f.readframes(chunk)  
-
-	#stop stream  
-	stream.stop_stream()  
-	stream.close()  
-
-	#close PyAudio  
-	p.terminate()  
-
-def playG5():
-	#define stream chunk   
-	chunk = 1024  
-
-	#open a wav format music  
-	f = wave.open(r"/Users/me/projects/perfectpitch/Piano.ff.G5.wav","rb")  
-	#instantiate PyAudio  
-	p = pyaudio.PyAudio()  
-	#open stream  
-	stream = p.open(format = p.get_format_from_width(f.getsampwidth()),  
-	                channels = f.getnchannels(),  
-	                rate = f.getframerate(),  
-	                output = True)  
-	#read data  
-	data = f.readframes(chunk)  
-
-	#play stream  
-	while data:  
-	    stream.write(data)  
-	    data = f.readframes(chunk)  
-
-	#stop stream  
-	stream.stop_stream()  
-	stream.close()  
-
-	#close PyAudio  
-	p.terminate()  
-#playA5()
-
+###### Arduino ##################
 arduinoSerialData = serial.Serial('/dev/cu.usbmodem1411', 9600)
-x = 1
+x = 2
 
-a = 'Card UID: 04 17 9F 0A D7 49 80'
-b = 'Card UID: 04 3F 91 0A D7 49 80'
-c = 'Card UID: 04 3F DE 0A D7 49 80'
-d = 'Card UID: 04 29 83 0A D7 49 80'
-e = 'Card UID: 04 29 C2 0A D7 49 80'
-f = 'Card UID: 04 43 94 0A D7 49 80'
-g = 'Card UID: 04 4D D9 0A D7 49 80'
+# a = 'Card UID: 04 17 9F 0A D7 49 80'
+# b = 'Card UID: 04 3F 91 0A D7 49 80'
+# c = 'Card UID: 04 3F DE 0A D7 49 80'
+# d = 'Card UID: 04 29 83 0A D7 49 80'
+# e = 'Card UID: 04 29 C2 0A D7 49 80'
+# f = 'Card UID: 04 43 94 0A D7 49 80'
+# g = 'Card UID: 04 4D D9 0A D7 49 80'
+cards = {}
+cards['a'] = 'Card UID: 04 17 9F 0A D7 49 80'
+cards['b'] = 'Card UID: 04 3F 91 0A D7 49 80'
+cards['c'] = 'Card UID: 04 3F DE 0A D7 49 80'
+cards['d'] = 'Card UID: 04 29 83 0A D7 49 80'
+cards['e'] = 'Card UID: 04 29 C2 0A D7 49 80'
+cards['f'] = 'Card UID: 04 43 94 0A D7 49 80'
+cards['g'] = 'Card UID: 04 4D D9 0A D7 49 80'
+
+
+#cards = [a, b, c, d, e, f, g]
 while x == 1 :
 	if (arduinoSerialData.inWaiting()>0):
 
 		myData = arduinoSerialData.readline()
 		print myData
-		# myd = myData.split()
-		# print myd[2:8]
-		# uid = myd[2:8]
+
 		myd = myData.splitlines()
-		# print myd
 		for item in myd:
 			if item == a: 
 				print 'A'
-				playA5()
+				play('A4', 'horn')
 			if item == b: 
 				print 'B'
-				playB5()				
+				play('B4', 'horn')
 			if item == c: 
 				print 'C'
-				playC5()			
+				play('C4', 'horn')
 			if item == d: 
 				print 'D'
-				playD5()
+				play('D4', 'horn')
 			if item == e: 
 				print 'E'
-				playE5()
+				play('E4', 'horn')
 			if item == f: 
 				print 'F'
-				playF5()
+				play('F4', 'horn')
 			if item == g: 
-				print 'G'
-				playG5()
+			 	print 'G'
+			 	play('G4', 'horn')
 
 
 			else:
 				print 'NONE'
+win = True
 
+while x == 2:
 
+	#playC5()
+	if (arduinoSerialData.inWaiting()>0):
+		if win == True:
+			currNote = random.choice(note)
+			noteToPlay = currNote + random.choice(tone)
+			print noteToPlay
+			play( noteToPlay , 'horn')
+
+			win = False
+		elif win == False:
+
+			myData = arduinoSerialData.readline()
+			myd = myData.splitlines()  
+			print 'What tone is that?'
+			print 'Scan the proper card'
+			#time.sleep(5)
+			for item in myd:
+
+				if item == cards[currNote.lower()]: 
+					#print 'C'
+					play( noteToPlay, 'horn')
+					print 'great job \n !!!!!'
+					win = True	
+
+				# elif item in cards:
+				# 	print 'tete'
+				# return
+				else:
+					print 'NONE'
+
+# while  x == 3:
+# 	play(G4, horn)
 
 
 # PyAudio = pyaudio.PyAudio
@@ -279,5 +161,3 @@ while x == 1 :
 # stream.stop_stream()
 # stream.close()
 # p.terminate()
-
-		
