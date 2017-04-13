@@ -143,9 +143,9 @@ while mode == 1:
 
 	#myData = (error, data) = 
 	myData = rdr.request()
-	#print myd
+	print data
 	if not error:
-		print("Card read UID: "+str(uid[0])+","+str(uid[1])+","+str(uid[2])+","+str(uid[3]))
+		#print("Card read UID: "+str(uid[0])+","+str(uid[1])+","+str(uid[2])+","+str(uid[3]))
 		# if win == True:
 
 		# 	##### Use tone 
