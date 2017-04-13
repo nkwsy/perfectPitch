@@ -137,7 +137,7 @@ while mode == 1:
 	(error, data) = rdr.request()
 	# print toneToPlay
 	instrumentToPlay = 'Flutenonvib'
-	noteToPlay = '4'
+	toneToPlay = '4'
 	#playC5()
 	play( noteToPlay , instrumentToPlay)
 
