@@ -1,4 +1,4 @@
-import serial
+#import serial
 import math
 import pyaudio
 import wave
