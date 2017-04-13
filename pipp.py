@@ -43,7 +43,7 @@ def play(note, instrument):
 	chunk = 1024  
 
 	#open a wav format music  
-	f = wave.open(r"/home/pi/perfectpitch/sounds/" + instrument + "/" + note + ".wav","rb")  
+	f = wave.open(r"/home/pi/perfectPitch/sounds/" + instrument + "/" + note + ".wav","rb")  
 	#instantiate PyAudio  
 	p = pyaudio.PyAudio()  
 	#open stream  
