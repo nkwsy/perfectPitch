@@ -150,7 +150,9 @@ while mode == 1:
 		#if not error:
 		print(str(uid))
 		
-		print util.read_out(4)
+		print("Reading block 10: " + str(rdr.read(10)))
+		# Always stop crypto1 when done working
+		rdr.stop_crypto()
 		#print("Card read UID: "+str(uid[0])+","+str(uid[1])+","+str(uid[2])+","+str(uid[3]))
 
 		#print("Card read UID: "+str(uid[0])+","+str(uid[1])+","+str(uid[2])+","+str(uid[3]))
