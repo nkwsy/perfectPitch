@@ -484,7 +484,7 @@ while level == 3:
 	rdr.wait_for_tag()
     # Request tag
 	(error, data) = rdr.request()
-    instrumentChoices = ['Flutenonvib', 'AltoFluteVib', 'BassClarinet', 'BassFlute']
+	instrumentChoices = ['Flutenonvib', 'AltoFluteVib', 'BassClarinet', 'BassFlute']
 	instrumentToPlay =  random.choice(instrumentChoices)
 	noteChoices = ['4', '5']
 	toneToPlay = random.choice(noteChoices)
