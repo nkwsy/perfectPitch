@@ -92,8 +92,14 @@ instrument = ['AltoFluteVib', 'AltoSaxNoVib', 'AltoSaxvib', 'BassClarinet', 'Bas
 ###### RFID ##################
 rdr = RFID()
 util = rdr.util()
+
 # Set util debug to true - it will print what's going on
 util.debug = True
+
+rfidstart= rdr.wait_for_tag()
+# Request tag
+(error, data) = rdr.request()
+
 
 # a = 'Card UID: 04 17 9F 0A D7 49 80'
 # b = 'Card UID: 04 3F 91 0A D7 49 80'
@@ -243,7 +249,8 @@ instrumentToPlay = random.choice(sounds.keys())
 # 			print bcolors.HEADER +'Scan the proper card' + bcolors.ENDC
 # 		elif win == False:
 
-# 			myData = arduinoSerialData.readline()
+# 			myData = (error, data) = rdr.request()
+
 # 			myd = myData.splitlines()  
 
 # 			#time.sleep(5)
@@ -273,7 +280,8 @@ instrumentToPlay = random.choice(sounds.keys())
 # 			print bcolors.HEADER +'Scan the proper card' + bcolors.ENDC
 # 		elif win == False:
 
-# 			myData = arduinoSerialData.readline()
+# 			myData = (error, data) = rdr.request()
+
 # 			myd = myData.splitlines()  
 
 # 			#time.sleep(5)
@@ -299,7 +307,8 @@ instrumentToPlay = random.choice(sounds.keys())
 # 			print bcolors.HEADER +'Scan the proper card' + bcolors.ENDC
 # 		elif win == False:
 
-# 			myData = arduinoSerialData.readline()
+# 			myData = (error, data) = rdr.request()
+
 # 			myd = myData.splitlines()  
 
 # 			#time.sleep(5)
@@ -328,7 +337,8 @@ instrumentToPlay = random.choice(sounds.keys())
 # 			print bcolors.HEADER +'Scan the proper card' + bcolors.ENDC
 # 		elif win == False:
 
-# 			myData = arduinoSerialData.readline()
+# 			myData = (error, data) = rdr.request()
+
 # 			myd = myData.splitlines()  
 
 # 			#time.sleep(5)
@@ -426,7 +436,8 @@ while level == 1:
 			score -= 1
 			win = False
 		elif win == False:
-			myData = arduinoSerialData.readline()
+			myData = (error, data) = rdr.request()
+
 			myd = myData.splitlines()  
 			for item in myd:
 				win = assess(item, currNote, instrumentToPlay, score)
@@ -471,7 +482,8 @@ while level == 2:
 			score -= 1
 			win = False
 		elif win == False:
-			myData = arduinoSerialData.readline()
+			myData = (error, data) = rdr.request()
+
 			myd = myData.splitlines()  
 			for item in myd:
 				win = assess(item, currNote, instrumentToPlay, score)
@@ -519,7 +531,8 @@ while level == 3:
 			score -= 1
 			win = False
 		elif win == False:
-			myData = arduinoSerialData.readline()
+			myData = (error, data) = rdr.request()
+
 			myd = myData.splitlines()  
 			for item in myd:
 				win = assess(item, currNote, instrumentToPlay, score)
@@ -567,7 +580,8 @@ while level == 4:
 			score -= 1
 			win = False
 		elif win == False:
-			myData = arduinoSerialData.readline()
+			myData = (error, data) = rdr.request()
+
 			myd = myData.splitlines()  
 			for item in myd:
 				win = assess(item, currNote, instrumentToPlay, score)
@@ -613,7 +627,8 @@ while level == 4:
 # 			score -= 1
 # 			win = False
 # 		elif win == False:
-# 			myData = arduinoSerialData.readline()
+# 			myData = (error, data) = rdr.request()
+
 # 			myd = myData.splitlines()  
 # 			for item in myd:
 # 				win = assess(item, currNote, instrumentToPlay, score)
@@ -641,7 +656,8 @@ while level == 4:
 # # 			print bcolors.HEADER +'Scan the proper card' + bcolors.ENDC
 # # 		elif win == False:
 
-# # 			myData = arduinoSerialData.readline()
+# # 			myData = (error, data) = rdr.request()
+
 # # 			myd = myData.splitlines()  
 
 # # 			#time.sleep(5)
@@ -667,7 +683,8 @@ while level == 4:
 # # 			print bcolors.HEADER +'Scan the proper card' + bcolors.ENDC
 # # 		elif win == False:
 
-# # 			myData = arduinoSerialData.readline()
+# # 			myData = (error, data) = rdr.request()
+
 # # 			myd = myData.splitlines()  
 
 # # 			#time.sleep(5)
@@ -696,7 +713,8 @@ while level == 4:
 # # 			print bcolors.HEADER +'Scan the proper card' + bcolors.ENDC
 # # 		elif win == False:
 
-# # 			myData = arduinoSerialData.readline()
+# # 			myData = (error, data) = rdr.request()
+
 # # 			myd = myData.splitlines()  
 
 # # 			#time.sleep(5)
@@ -736,7 +754,8 @@ while level == 4:
 # 			correct = False
 # 			win = False
 # 		elif win == False:
-# 			myData = arduinoSerialData.readline()
+# 			myData = (error, data) = rdr.request()
+
 # 			myd = myData.splitlines()  
 # 			for item in myd:
 # 				win = assess(item, 'C', 'Flutenonvib', score)
@@ -767,7 +786,8 @@ while level == 4:
 # 			correct = False
 # 			win = False
 # 		elif win == False:
-# 			myData = arduinoSerialData.readline()
+# 			myData = (error, data) = rdr.request()
+
 # 			myd = myData.splitlines()  
 # 			for item in myd:
 # 				win = assess(item, 'D', 'Flutenonvib', score)
@@ -796,7 +816,8 @@ while level == 4:
 # 			score -= 1
 # 			win = False
 # 		elif win == False:
-# 			myData = arduinoSerialData.readline()
+# 			myData = (error, data) = rdr.request()
+
 # 			myd = myData.splitlines()  
 # 			for item in myd:
 # 				win = assess(item, currNote , 'Flutenonvib', score)
@@ -826,7 +847,8 @@ while level == 4:
 # 			score -= 1
 # 			win = False
 # 		elif win == False:
-# 			myData = arduinoSerialData.readline()
+# 			myData = (error, data) = rdr.request()
+
 # 			myd = myData.splitlines()  
 # 			for item in myd:
 # 				win = assess(item, currNote, 'Flutenonvib', score)
@@ -857,7 +879,8 @@ while level == 4:
 # 			score -= 1
 # 			win = False
 # 		elif win == False:
-# 			myData = arduinoSerialData.readline()
+# 			myData = (error, data) = rdr.request()
+
 # 			myd = myData.splitlines()  
 # 			for item in myd:
 # 				win = assess(item, currNote, 'Flutenonvib', score)
@@ -887,7 +910,8 @@ while level == 4:
 # 			score -= 1
 # 			win = False
 # 		elif win == False:
-# 			myData = arduinoSerialData.readline()
+# 			myData = (error, data) = rdr.request()
+
 # 			myd = myData.splitlines()  
 # 			for item in myd:
 # 				win = assess(item, currNote, 'Flutenonvib', score)
@@ -917,7 +941,8 @@ while level == 4:
 # 			score -= 1
 # 			win = False
 # 		elif win == False:
-# 			myData = arduinoSerialData.readline()
+# 			myData = (error, data) = rdr.request()
+
 # 			myd = myData.splitlines()  
 # 			for item in myd:
 # 				win = assess(item, currNote, 'Flutenonvib', score)
@@ -948,7 +973,8 @@ while level == 4:
 # 			score -= 1
 # 			win = False
 # 		elif win == False:
-# 			myData = arduinoSerialData.readline()
+# 			myData = (error, data) = rdr.request()
+
 # 			myd = myData.splitlines()  
 # 			for item in myd:
 # 				win = assess(item, currNote, 'Flutenonvib', score)
@@ -979,7 +1005,8 @@ while level == 4:
 # 			score -= 1
 # 			win = False
 # 		elif win == False:
-# 			myData = arduinoSerialData.readline()
+# 			myData = (error, data) = rdr.request()
+
 # 			myd = myData.splitlines()  
 # 			for item in myd:
 # 				win = assess(item, currNote, instrumentToPlay, score)
@@ -1010,7 +1037,8 @@ while level == 4:
 # 			score -= 1
 # 			win = False
 # 		elif win == False:
-# 			myData = arduinoSerialData.readline()
+# 			myData = (error, data) = rdr.request()
+
 # 			myd = myData.splitlines()  
 # 			for item in myd:
 # 				win = assess(item, currNote, instrumentToPlay, score)
