@@ -88,6 +88,23 @@ instrument = ['AltoFluteVib', 'AltoSaxNoVib', 'AltoSaxvib', 'BassClarinet', 'Bas
 
 insult = ['YOU SUCK','YOUR A LOSER', 'TONE DEF IDIOT', 'MELLON TELLER!!', 'you are useless', 'I have never met anyone more disapointing than you']
 
+
+cards = {}
+cards['A'] = 'Card UID: 04 17 9F 0A D7 49 80'
+cards['Ab'] = 'Card UID: 04 2D 62 0A D7 49 80'
+cards['B'] = 'Card UID: 04 3F 91 0A D7 49 80'
+cards['Bb'] = 'Card UID: 04 38 5B 0A D7 49 80'
+cards['C'] = 'Card UID: 04 3F DE 0A D7 49 80'
+cards['D'] = 'Card UID: 04 29 83 0A D7 49 80'
+cards['Db'] = 'XXXX'
+cards['E'] = 'Card UID: 04 29 C2 0A D7 49 80'
+cards['Eb'] = 'XXXX'
+cards['F'] = 'Card UID: 04 43 94 0A D7 49 80'
+cards['G'] = 'Card UID: 04 4D D9 0A D7 49 80'
+cards['Gb'] = 'XXXX'
+
+
+
 # x = input('Enter dificulty level 1-5 :')
 score = 0
 mode = input('Enter mode 1= Beginer, 2= Tone training 3= beast mode 4= Practice  :')
@@ -109,44 +126,52 @@ while mode == '4' :
 	#print noteToPlay
 	play( noteToPlay , instrumentToPlay)
 
-x = 0
-while mode == '1':
-
-	
-	welcome = 'Welcome to the perfect pitch workshop.\n If you reach level 10 you will be thought of as an amazing person\n If you are a baby well... congrats \n\n'
-	rules = 'For each tone played you will place the corresponding block on the pad.\n If you get the answer correct you get a point. If you get it incorrect you loose a point.\n The game gets progressively harder the more points you get.\n '
-	#######  MODES  ######
-
-	##### Relitive mode, allows for reference tone to be played  
-	relitiveMode = False
-
-	#### Octive hints #####
-	hints = False
-
-	##### Repeating ######
-	repeating = False
-
-	##### Training mode #######
-	training = False
-
-	if x == 10:
-		if training == True:
-			level = -10
-		else:
-			level = 0
 
 
-	### easy, same tone (4) and same instrument randomly picked ####
-	while level == 0:
-		print welcome
-		time.sleep(1)
-		print rules
-		if relitiveMode == True:
-			print 'This is a Flute playing C6'
-			play( 'C4' , 'Flutenonvib')
-		
-		level += 1
 
+while mode == 1:
+	rdr.wait_for_tag()
+    # Request tag
+	(error, data) = rdr.request()
+	# print toneToPlay
+	instrumentToPlay = 'Flutenonvib'
+	noteToPlay = '4'
+	#playC5()
+	if not error:
+		if win == True:
+
+			##### Use tone 
+			currNote = random.choice(note)
+			noteToPlay = currNote + toneToPlay
+			# instrumentToPlay = random.choice(instrument)
+			print noteToPlay
+			if correct == True:
+				score += 1
+				print 'Your score is  ' + str(score)
+			if correct == False:
+				correct = True
+			if score == 10:
+				level = 2
+			if score < -5:
+				score = 0
+			if score < 10:
+				play( noteToPlay , 'Flutenonvib')
+				win = False
+			score += 1
+			print 'Your score is  ' + str(score)
+			play( noteToPlay , instrumentToPlay)
+
+			win = False
+			print bcolors.BOLD + 'What tone is that?' + bcolors.ENDC
+			print bcolors.HEADER +'Scan the proper card' + bcolors.ENDC
+		elif win == 'wrong':
+			score -= 1
+			win = False
+		elif win == False:
+			myData = (error, data) = rdr.request()
+			myd = myData.splitlines(data)  
+			for item in myd:
+				win = assess(item, currNote, instrumentToPlay, score)
 
 
 
