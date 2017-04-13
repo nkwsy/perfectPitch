@@ -13,6 +13,12 @@ from assets import bcolors
 
 pi = "/home/pi/perfectPitch/sounds/"
 
+#RFID 
+rdr = RFID()
+util = rdr.util()
+# Set util debug to true - it will print what's going on
+util.debug = True
+
 def play(note, instrument):
 	#define stream chunk   
 	chunk = 1024  
