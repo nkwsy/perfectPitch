@@ -139,7 +139,7 @@ while mode == 1:
 	instrumentToPlay = 'Flutenonvib'
 	toneToPlay = '4'
 	#playC5()
-	play( noteToPlay , instrumentToPlay)
+	play( 'C4' , instrumentToPlay)
 
 	myd = myData.splitlines(data)  
 
