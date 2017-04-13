@@ -28,30 +28,6 @@ def play(note, instrument):
 	                output = True)  
 	#read data  
 	data = f.readframes(chunk)  
-
-def assess(item, currNote, instrumentToPlay, score):
-
-				if item == cards[currNote]: 
-					#print 'C'
-					play( noteToPlay, instrumentToPlay)
-					print bcolors.WARNING + 'great job \n !!!!!' + bcolors.ENDC
-					print noteToPlay
-					win = True	
-					#score += 1
-					return True
-
-				elif item in cards.values():
-
-					#score -= 1
-					print bcolors.FAIL + random.choice(insult) + bcolors.ENDC
-					print bcolors.BOLD + 'Try Again!\n' + bcolors.ENDC
-					print 'this is the' +item
-					return 'wrong'				
-				else:
-
-					return False
-
-
 	#play stream
 	while data:
 		stream.write(data)  
@@ -60,10 +36,29 @@ def assess(item, currNote, instrumentToPlay, score):
 	#stop stream  
 	stream.stop_stream()  
 	stream.close()  
-
 	#close PyAudio  
 	p.terminate()  
 
+def assess(item, currNote, instrumentToPlay, score):
+	if item == cards[currNote]: 
+		#print 'C'
+		play( noteToPlay, instrumentToPlay)
+		print bcolors.WARNING + 'great job \n !!!!!' + bcolors.ENDC
+		print noteToPlay
+		win = True	
+		#score += 1
+		return True
+
+	elif item in cards.values():
+
+		#score -= 1
+		print bcolors.FAIL + random.choice(insult) + bcolors.ENDC
+		print bcolors.BOLD + 'Try Again!\n' + bcolors.ENDC
+		print 'this is the' +item
+		return 'wrong'				
+	else:
+
+		return False
 
 ############# tone randomizer
 sounds = {}
