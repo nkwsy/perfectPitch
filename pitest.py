@@ -146,7 +146,7 @@ while mode == 1:
 	print data
 	if not error:
 		print data
-		util.dump()
+		print util.dump()
 		#print("Card read UID: "+str(uid[0])+","+str(uid[1])+","+str(uid[2])+","+str(uid[3]))
 		# if win == True:
 
