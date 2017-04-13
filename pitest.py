@@ -149,7 +149,7 @@ while mode == 1:
 		(error, uid) = rdr.anticoll()
 		#if not error:
 		# Print UID
-		print util.dump()
+		print uid
 		#print("Card read UID: "+str(uid[0])+","+str(uid[1])+","+str(uid[2])+","+str(uid[3]))
 
 		#print("Card read UID: "+str(uid[0])+","+str(uid[1])+","+str(uid[2])+","+str(uid[3]))
