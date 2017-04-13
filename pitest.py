@@ -145,6 +145,7 @@ while mode == 1:
 	myData = rdr.request()
 	print data
 	if not error:
+		print data
 		#print("Card read UID: "+str(uid[0])+","+str(uid[1])+","+str(uid[2])+","+str(uid[3]))
 		# if win == True:
 
@@ -180,9 +181,3 @@ while mode == 1:
 		# 	myd = myData.splitlines(data)  
 		# 	for item in myd:
 		# 		win = assess(item, currNote, instrumentToPlay, score)
-
-
-
-
-
-
