@@ -1,0 +1,11 @@
+serial
+math
+pyaudio
+wave
+random
+time
+multiprocessing
+psycopg2
+pirc522
+signal
+time
