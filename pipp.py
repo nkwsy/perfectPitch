@@ -387,11 +387,14 @@ while level == 0:
 
 ##### Flute only, using 4 #######
 while level == 1:
+	rdr.wait_for_tag()
+    # Request tag
+    (error, data) = rdr.request()
 	# print toneToPlay
 	instrumentToPlay = 'Flutenonvib'
 	toneToPlay = '4'
 	#playC5()
-	if (arduinoSerialData.inWaiting()>0):
+	if not error:
 		if win == True:
 
 			##### Use tone 
@@ -429,6 +432,9 @@ while level == 1:
 
 ####### Flute only LV 2 ####################
 while level == 2:
+	rdr.wait_for_tag()
+    # Request tag
+    (error, data) = rdr.request()
 	# print toneToPlay
 	instrumentChoices = ['Flutenonvib', 'AltoFluteVib']
 	instrumentToPlay =  random.choice(instrumentChoices)
@@ -474,7 +480,10 @@ while level == 2:
 ####### LV 3 ####################
 while level == 3:
 	# print toneToPlay
-	instrumentChoices = ['Flutenonvib', 'AltoFluteVib', 'BassClarinet', 'BassFlute']
+	rdr.wait_for_tag()
+    # Request tag
+    (error, data) = rdr.request()
+    instrumentChoices = ['Flutenonvib', 'AltoFluteVib', 'BassClarinet', 'BassFlute']
 	instrumentToPlay =  random.choice(instrumentChoices)
 	noteChoices = ['4', '5']
 	toneToPlay = random.choice(noteChoices)
@@ -518,7 +527,10 @@ while level == 3:
 
 ####### LV 4 ####################
 while level == 4:
-	# print toneToPlay
+	rdr.wait_for_tag()
+    # Request tag
+    (error, data) = rdr.request()
+    # print toneToPlay
 	instrumentChoices = ['Flutenonvib', 'AltoFluteVib', 'BassClarinet', 'BassFlute', 'EbClarinet', 'SopSaxVib', 'trumpet']
 	instrumentToPlay =  random.choice(instrumentChoices)
 	noteChoices = ['4', '5']
@@ -559,480 +571,480 @@ while level == 4:
 			for item in myd:
 				win = assess(item, currNote, instrumentToPlay, score)
 
-####### LV 5 ####################
-while level == 5:
-	#
-	instrumentChoices = ['Flutenonvib', 'AltoFluteVib', 'BassClarinet', 'BassFlute', 'EbClarinet', 'SopSaxVib', 'trumpet']
+# ####### LV 5 ####################
+# while level == 5:
+# 	#
+# 	instrumentChoices = ['Flutenonvib', 'AltoFluteVib', 'BassClarinet', 'BassFlute', 'EbClarinet', 'SopSaxVib', 'trumpet']
 	
-	noteChoices = ['4', '5', '3']
-	toneToPlay = random.choice(noteChoices)
-	 #print toneToPlay
-	instrumentToPlay = random.choice(instrument)
+# 	noteChoices = ['4', '5', '3']
+# 	toneToPlay = random.choice(noteChoices)
+# 	 #print toneToPlay
+# 	instrumentToPlay = random.choice(instrument)
 
-	#playC5()
-	if (arduinoSerialData.inWaiting()>0):
-		if win == True:
-			##### Use tone 
-			currNote = random.choice(note)
-			noteToPlay = currNote + toneToPlay
-			# instrumentToPlay = random.choice(instrument)
-			print noteToPlay
-			if correct == True:
-				score += 1
-				print 'Your score is  ' + str(score)
-			if correct == False:
-				correct = True
-			if score == 45:
-				level = 3
-			if score < -5:
-				score = 0
-			if score < 45:
-				play( noteToPlay , instrumentToPlay)
-				win = False
-			score += 1
-			print 'Your score is  ' + str(score)
-			play( noteToPlay , instrumentToPlay)
-
-			win = False
-			print bcolors.BOLD + 'What tone is that?' + bcolors.ENDC
-			print bcolors.HEADER +'Scan the proper card' + bcolors.ENDC
-		elif win == 'wrong':
-			score -= 1
-			win = False
-		elif win == False:
-			myData = arduinoSerialData.readline()
-			myd = myData.splitlines()  
-			for item in myd:
-				win = assess(item, currNote, instrumentToPlay, score)
-
-### easy, same tone (4) and same instrument randomly picked ####
-
-# ### easy, same tone (4) and same instrument randomly picked ####
-# while level == 3:
-# 	# print toneToPlay
-# 	print instrumentToPlay
-# 	print 'Your score is  ' + str(score)
 # 	#playC5()
 # 	if (arduinoSerialData.inWaiting()>0):
 # 		if win == True:
-
 # 			##### Use tone 
 # 			currNote = random.choice(note)
 # 			noteToPlay = currNote + toneToPlay
 # 			# instrumentToPlay = random.choice(instrument)
 # 			print noteToPlay
+# 			if correct == True:
+# 				score += 1
+# 				print 'Your score is  ' + str(score)
+# 			if correct == False:
+# 				correct = True
+# 			if score == 45:
+# 				level = 3
+# 			if score < -5:
+# 				score = 0
+# 			if score < 45:
+# 				play( noteToPlay , instrumentToPlay)
+# 				win = False
+# 			score += 1
+# 			print 'Your score is  ' + str(score)
 # 			play( noteToPlay , instrumentToPlay)
 
 # 			win = False
 # 			print bcolors.BOLD + 'What tone is that?' + bcolors.ENDC
 # 			print bcolors.HEADER +'Scan the proper card' + bcolors.ENDC
+# 		elif win == 'wrong':
+# 			score -= 1
+# 			win = False
 # 		elif win == False:
-
 # 			myData = arduinoSerialData.readline()
 # 			myd = myData.splitlines()  
-
-# 			#time.sleep(5)
-
 # 			for item in myd:
 # 				win = assess(item, currNote, instrumentToPlay, score)
 
+# ### easy, same tone (4) and same instrument randomly picked ####
 
-# ### Medium Same tone, random instrument 
-# while x == 4:
-# 	instrumentToPlay = random.choice(instrument)
-# 	#playC5()
-# 	if (arduinoSerialData.inWaiting()>0):
-# 		if win == True:
-# 			currNote = random.choice(note)
-# 			noteToPlay = currNote + random.choice(tone)
+# # ### easy, same tone (4) and same instrument randomly picked ####
+# # while level == 3:
+# # 	# print toneToPlay
+# # 	print instrumentToPlay
+# # 	print 'Your score is  ' + str(score)
+# # 	#playC5()
+# # 	if (arduinoSerialData.inWaiting()>0):
+# # 		if win == True:
+
+# # 			##### Use tone 
+# # 			currNote = random.choice(note)
+# # 			noteToPlay = currNote + toneToPlay
+# # 			# instrumentToPlay = random.choice(instrument)
+# # 			print noteToPlay
+# # 			play( noteToPlay , instrumentToPlay)
+
+# # 			win = False
+# # 			print bcolors.BOLD + 'What tone is that?' + bcolors.ENDC
+# # 			print bcolors.HEADER +'Scan the proper card' + bcolors.ENDC
+# # 		elif win == False:
+
+# # 			myData = arduinoSerialData.readline()
+# # 			myd = myData.splitlines()  
+
+# # 			#time.sleep(5)
+
+# # 			for item in myd:
+# # 				win = assess(item, currNote, instrumentToPlay, score)
+
+
+# # ### Medium Same tone, random instrument 
+# # while x == 4:
+# # 	instrumentToPlay = random.choice(instrument)
+# # 	#playC5()
+# # 	if (arduinoSerialData.inWaiting()>0):
+# # 		if win == True:
+# # 			currNote = random.choice(note)
+# # 			noteToPlay = currNote + random.choice(tone)
 	
-# 			#print noteToPlay
-# 			play( noteToPlay , instrumentToPlay)
+# # 			#print noteToPlay
+# # 			play( noteToPlay , instrumentToPlay)
 
-# 			win = False
-# 			print bcolors.BOLD + 'What tone is that?' + bcolors.ENDC
-# 			print bcolors.HEADER +'Scan the proper card' + bcolors.ENDC
-# 		elif win == False:
+# # 			win = False
+# # 			print bcolors.BOLD + 'What tone is that?' + bcolors.ENDC
+# # 			print bcolors.HEADER +'Scan the proper card' + bcolors.ENDC
+# # 		elif win == False:
 
-# 			myData = arduinoSerialData.readline()
-# 			myd = myData.splitlines()  
+# # 			myData = arduinoSerialData.readline()
+# # 			myd = myData.splitlines()  
 
-# 			#time.sleep(5)
-# 			for item in myd:
-# 				win = assess(item, currNote, instrumentToPlay, score)
+# # 			#time.sleep(5)
+# # 			for item in myd:
+# # 				win = assess(item, currNote, instrumentToPlay, score)
 
 
-# ### Hard random tone, random instrument, 
-# while x == 5:
+# # ### Hard random tone, random instrument, 
+# # while x == 5:
 
-# 	#playC5()
-# 	if (arduinoSerialData.inWaiting()>0):
-# 		if win == True:
-# 			currNote = random.choice(note)
-# 			instrumentToPlay = random.choice(sounds.keys())
-# 			toneToPlay = random.choice(sounds[instrumentToPlay])
-# 			noteToPlay = currNote + toneToPlay
+# # 	#playC5()
+# # 	if (arduinoSerialData.inWaiting()>0):
+# # 		if win == True:
+# # 			currNote = random.choice(note)
+# # 			instrumentToPlay = random.choice(sounds.keys())
+# # 			toneToPlay = random.choice(sounds[instrumentToPlay])
+# # 			noteToPlay = currNote + toneToPlay
 			
 
-# 			#instrumentToPlay = random.choice(instrument)	
-# 			#print noteToPlay
-# 			play( noteToPlay , instrumentToPlay)
+# # 			#instrumentToPlay = random.choice(instrument)	
+# # 			#print noteToPlay
+# # 			play( noteToPlay , instrumentToPlay)
 
+# # 			win = False
+# # 			print bcolors.BOLD + 'What tone is that?' + bcolors.ENDC
+# # 			print bcolors.HEADER +'Scan the proper card' + bcolors.ENDC
+# # 		elif win == False:
+
+# # 			myData = arduinoSerialData.readline()
+# # 			myd = myData.splitlines()  
+
+# # 			#time.sleep(5)
+# # 			for item in myd:
+# # 				win = assess(item, currNote, instrumentToPlay, score)
+
+
+
+# #########################
+# ###### TRAINING #########
+# #########################
+# while level == -10:
+
+# 	if (arduinoSerialData.inWaiting()>0):
+
+# 		if win == True:
+# 			print welcome
+# 			print rules
+# 			print 'Training mode'
+# 			print 'Place C block on pad'
+# 			noteToPlay = 'C4'
+# 			if correct == True:
+# 				score += 1
+# 			if correct == False:
+# 				correct = True
+# 			print 'Your score is  ' + str(score)
+# 			if score == 4:
+# 				level = -9
+# 				pass
+# 			if score < -5:
+# 				score = 0
+# 			if score < 4:
+# 				play( 'C4' , 'Flutenonvib')
+# 				win = False
+
+# 		elif win == 'wrong':
+# 			correct = False
 # 			win = False
-# 			print bcolors.BOLD + 'What tone is that?' + bcolors.ENDC
-# 			print bcolors.HEADER +'Scan the proper card' + bcolors.ENDC
 # 		elif win == False:
-
 # 			myData = arduinoSerialData.readline()
 # 			myd = myData.splitlines()  
+# 			for item in myd:
+# 				win = assess(item, 'C', 'Flutenonvib', score)
+# while level == -9:
 
-# 			#time.sleep(5)
+# 	if (arduinoSerialData.inWaiting()>0):
+
+# 		if win == True:
+# 			print 'Training mode'
+# 			print 'Place D block on pad'
+# 			noteToPlay = 'D4'
+
+
+# 			if correct == True:
+# 				score += 1
+# 			if correct == False:
+# 				correct = True
+# 			print 'Your score is  ' + str(score)
+# 			if score == 6:
+# 				level = -8
+# 			if score < -5:
+# 				score = 0
+# 			if score < 6:
+# 				play( noteToPlay , 'Flutenonvib')
+# 				win = False
+
+# 		elif win == 'wrong':
+# 			correct = False
+# 			win = False
+# 		elif win == False:
+# 			myData = arduinoSerialData.readline()
+# 			myd = myData.splitlines()  
+# 			for item in myd:
+# 				win = assess(item, 'D', 'Flutenonvib', score)
+# while level == -8:
+
+# 	if (arduinoSerialData.inWaiting()>0):
+
+# 		if win == True:
+
+# 			print 'Training mode'
+# 			print 'Place correct block block on pad'
+# 			CorD = ['C', 'D']
+# 			currNote = random.choice(CorD)
+# 			noteToPlay = currNote + '4'
+# 			score += 1
+# 			print 'Your score is  ' + str(score)
+# 			if score == 9:
+# 				level = -7
+# 			if score < -5:
+# 				score = 0
+# 			if score <9:
+# 				play( noteToPlay , 'Flutenonvib')
+# 				win = False
+
+# 		elif win == 'wrong':
+# 			score -= 1
+# 			win = False
+# 		elif win == False:
+# 			myData = arduinoSerialData.readline()
+# 			myd = myData.splitlines()  
+# 			for item in myd:
+# 				win = assess(item, currNote , 'Flutenonvib', score)
+
+# while level == -7:
+
+# 	if (arduinoSerialData.inWaiting()>0):
+
+# 		if win == True:
+# 			print 'Training mode'
+# 			print bcolors.HEADER + 'Introduce E block' + bcolors.ENDC
+# 			print 'Place Correct block on pad'
+# 			CorD = ['C', 'D', 'E']
+# 			currNote = random.choice(CorD)
+# 			noteToPlay = currNote + '4'
+# 			score += 1
+# 			print 'Your score is  ' + str(score)
+# 			if score == 13:
+# 				level = -6
+# 			if score < -5:
+# 				score = 0
+# 			if score <13:
+# 				play( noteToPlay , 'Flutenonvib')
+# 				win = False
+
+# 		elif win == 'wrong':
+# 			score -= 1
+# 			win = False
+# 		elif win == False:
+# 			myData = arduinoSerialData.readline()
+# 			myd = myData.splitlines()  
+# 			for item in myd:
+# 				win = assess(item, currNote, 'Flutenonvib', score)
+
+
+# while level == -6:
+
+# 	if (arduinoSerialData.inWaiting()>0):
+
+# 		if win == True:
+# 			print 'Training mode'
+# 			print bcolors.HEADER + 'Introduce F block' + bcolors.ENDC
+# 			print 'Place Correct block on pad'
+# 			CorD = ['C', 'D', 'E', 'F']
+# 			currNote = random.choice(CorD)
+# 			noteToPlay = currNote + '4'
+# 			score += 1
+# 			print 'Your score is  ' + str(score)
+# 			if score == 20:
+# 				level = -5
+# 			if score < -5:
+# 				score = 0
+# 			if score <20:
+# 				play( noteToPlay , 'Flutenonvib')
+# 				win = False
+
+# 		elif win == 'wrong':
+# 			score -= 1
+# 			win = False
+# 		elif win == False:
+# 			myData = arduinoSerialData.readline()
+# 			myd = myData.splitlines()  
+# 			for item in myd:
+# 				win = assess(item, currNote, 'Flutenonvib', score)
+
+# while level == -5:
+
+# 	if (arduinoSerialData.inWaiting()>0):
+
+# 		if win == True:
+# 			print 'Training mode'
+# 			print bcolors.HEADER + 'Introduce G block' + bcolors.ENDC
+# 			print 'Place Correct block on pad'
+# 			CorD = ['C', 'D', 'E', 'F', 'G']
+# 			currNote = random.choice(CorD)
+# 			noteToPlay = currNote + '4'
+# 			score += 1
+# 			print 'Your score is  ' + str(score)
+# 			if score == 30:
+# 				level = -4
+# 			if score < -5:
+# 				score = 0
+# 			if score < 30:
+# 				play( noteToPlay , 'Flutenonvib')
+# 				win = False
+
+# 		elif win == 'wrong':
+# 			score -= 1
+# 			win = False
+# 		elif win == False:
+# 			myData = arduinoSerialData.readline()
+# 			myd = myData.splitlines()  
+# 			for item in myd:
+# 				win = assess(item, currNote, 'Flutenonvib', score)
+
+# while level == -4:
+
+# 	if (arduinoSerialData.inWaiting()>0):
+
+# 		if win == True:
+# 			print 'Training mode'
+# 			print bcolors.HEADER + 'Introduce A block' + bcolors.ENDC
+# 			print 'Place Correct block on pad'
+# 			CorD = ['A', 'C', 'D', 'E', 'F', 'G']
+# 			currNote = random.choice(CorD)
+# 			noteToPlay = currNote + '4'
+# 			score += 1
+# 			print 'Your score is  ' + str(score)
+# 			if score == 40:
+# 				level = -3
+# 			if score < -5:
+# 				score = 0
+# 			if score < 40:
+# 				play( noteToPlay , 'Flutenonvib')
+# 				win = False
+
+# 		elif win == 'wrong':
+# 			score -= 1
+# 			win = False
+# 		elif win == False:
+# 			myData = arduinoSerialData.readline()
+# 			myd = myData.splitlines()  
+# 			for item in myd:
+# 				win = assess(item, currNote, 'Flutenonvib', score)
+
+
+# while level == -3:
+
+# 	if (arduinoSerialData.inWaiting()>0):
+
+# 		if win == True:
+# 			print 'Training mode'
+# 			print bcolors.HEADER + 'Introduce B block' + bcolors.ENDC
+# 			print 'Place Correct block on pad'
+# 			CorD = ['A', 'B', 'C', 'D', 'E', 'F', 'G']
+# 			currNote = random.choice(CorD)
+# 			noteToPlay = currNote + '4'
+# 			score += 1
+# 			print 'Your score is  ' + str(score)
+# 			if score == 50:
+# 				level = -2
+# 			if score < -5:
+# 				score = 0
+# 			if score < 50:
+# 				play( noteToPlay , 'Flutenonvib')
+# 				win = False
+
+# 		elif win == 'wrong':
+# 			score -= 1
+# 			win = False
+# 		elif win == False:
+# 			myData = arduinoSerialData.readline()
+# 			myd = myData.splitlines()  
+# 			for item in myd:
+# 				win = assess(item, currNote, 'Flutenonvib', score)
+# while level == -2:
+
+# 	if (arduinoSerialData.inWaiting()>0):
+
+# 		if win == True:
+# 			print 'Training mode'
+# 			print bcolors.HEADER + 'Introduce new tones' + bcolors.ENDC
+# 			print 'Place Correct block on pad'
+# 			CorD = ['C']
+# 			currNote = random.choice(CorD)
+# 			trainingInstruments = ['trumpet', 'Flutenonvib']
+# 			instrumentToPlay = random.choice(trainingInstruments)
+# 			noteToPlay = currNote + '4'
+# 			score += 1
+# 			print 'Your score is  ' + str(score)
+# 			if score == 54:
+# 				level = -1
+# 			if score < -5:
+# 				score = 0
+# 			if score < 54:
+# 				play( noteToPlay , instrumentToPlay)
+# 				win = False
+
+# 		elif win == 'wrong':
+# 			score -= 1
+# 			win = False
+# 		elif win == False:
+# 			myData = arduinoSerialData.readline()
+# 			myd = myData.splitlines()  
+# 			for item in myd:
+# 				win = assess(item, currNote, instrumentToPlay, score)
+
+# while level == -1:
+
+# 	if (arduinoSerialData.inWaiting()>0):
+
+# 		if win == True:
+# 			print 'Training mode'
+# 			print bcolors.HEADER + 'Introduce A block' + bcolors.ENDC
+# 			print 'Place Correct block on pad'
+# 			CorD = ['A', 'B', 'C', 'D', 'E', 'F', 'G']
+# 			currNote = random.choice(CorD)
+# 			noteToPlay = currNote + '4'
+# 			score += 1
+# 			print 'Your score is  ' + str(score)
+# 			if score == 70:
+# 				print "Congradulations!!! You have completed training!"
+# 				level = 0
+# 			if score < -5:
+# 				score = 0
+# 			if score < 70:
+# 				play( noteToPlay , instrumentToPlay)
+# 				win = False
+
+# 		elif win == 'wrong':
+# 			score -= 1
+# 			win = False
+# 		elif win == False:
+# 			myData = arduinoSerialData.readline()
+# 			myd = myData.splitlines()  
 # 			for item in myd:
 # 				win = assess(item, currNote, instrumentToPlay, score)
 
 
 
-#########################
-###### TRAINING #########
-#########################
-while level == -10:
 
-	if (arduinoSerialData.inWaiting()>0):
-
-		if win == True:
-			print welcome
-			print rules
-			print 'Training mode'
-			print 'Place C block on pad'
-			noteToPlay = 'C4'
-			if correct == True:
-				score += 1
-			if correct == False:
-				correct = True
-			print 'Your score is  ' + str(score)
-			if score == 4:
-				level = -9
-				pass
-			if score < -5:
-				score = 0
-			if score < 4:
-				play( 'C4' , 'Flutenonvib')
-				win = False
-
-		elif win == 'wrong':
-			correct = False
-			win = False
-		elif win == False:
-			myData = arduinoSerialData.readline()
-			myd = myData.splitlines()  
-			for item in myd:
-				win = assess(item, 'C', 'Flutenonvib', score)
-while level == -9:
-
-	if (arduinoSerialData.inWaiting()>0):
-
-		if win == True:
-			print 'Training mode'
-			print 'Place D block on pad'
-			noteToPlay = 'D4'
+# #todo add easy modes, start with 2 diff notes, then progresively add note, then add octives with prompt on which its in. then remove prompt. then add diff instruments, the
+# # while  x == 3:
+# # 	play(G4, horn)
 
 
-			if correct == True:
-				score += 1
-			if correct == False:
-				correct = True
-			print 'Your score is  ' + str(score)
-			if score == 6:
-				level = -8
-			if score < -5:
-				score = 0
-			if score < 6:
-				play( noteToPlay , 'Flutenonvib')
-				win = False
+# # PyAudio = pyaudio.PyAudio
+# # BITRATE = 16000 #number of frames per second/frameset.      
+# # FREQUENCY = 261.63 #Hz, waves per second, 261.63=C4-note.
+# # LENGTH = 3 #seconds to play sound
 
-		elif win == 'wrong':
-			correct = False
-			win = False
-		elif win == False:
-			myData = arduinoSerialData.readline()
-			myd = myData.splitlines()  
-			for item in myd:
-				win = assess(item, 'D', 'Flutenonvib', score)
-while level == -8:
-
-	if (arduinoSerialData.inWaiting()>0):
-
-		if win == True:
-
-			print 'Training mode'
-			print 'Place correct block block on pad'
-			CorD = ['C', 'D']
-			currNote = random.choice(CorD)
-			noteToPlay = currNote + '4'
-			score += 1
-			print 'Your score is  ' + str(score)
-			if score == 9:
-				level = -7
-			if score < -5:
-				score = 0
-			if score <9:
-				play( noteToPlay , 'Flutenonvib')
-				win = False
-
-		elif win == 'wrong':
-			score -= 1
-			win = False
-		elif win == False:
-			myData = arduinoSerialData.readline()
-			myd = myData.splitlines()  
-			for item in myd:
-				win = assess(item, currNote , 'Flutenonvib', score)
-
-while level == -7:
-
-	if (arduinoSerialData.inWaiting()>0):
-
-		if win == True:
-			print 'Training mode'
-			print bcolors.HEADER + 'Introduce E block' + bcolors.ENDC
-			print 'Place Correct block on pad'
-			CorD = ['C', 'D', 'E']
-			currNote = random.choice(CorD)
-			noteToPlay = currNote + '4'
-			score += 1
-			print 'Your score is  ' + str(score)
-			if score == 13:
-				level = -6
-			if score < -5:
-				score = 0
-			if score <13:
-				play( noteToPlay , 'Flutenonvib')
-				win = False
-
-		elif win == 'wrong':
-			score -= 1
-			win = False
-		elif win == False:
-			myData = arduinoSerialData.readline()
-			myd = myData.splitlines()  
-			for item in myd:
-				win = assess(item, currNote, 'Flutenonvib', score)
+# # NUMBEROFFRAMES = int(BITRATE * LENGTH)
+# # RESTFRAMES = NUMBEROFFRAMES % BITRATE
+# # WAVEDATA = ''    
 
 
-while level == -6:
+# # for x in xrange(NUMBEROFFRAMES):
+# #  WAVEDATA = WAVEDATA+chr(int(math.sin(x/((BITRATE/FREQUENCY)/math.pi))*127+128))    
 
-	if (arduinoSerialData.inWaiting()>0):
+# # #fill remainder of frameset with silence
+# # for x in xrange(RESTFRAMES): 
+# #  WAVEDATA = WAVEDATA+chr(128)
 
-		if win == True:
-			print 'Training mode'
-			print bcolors.HEADER + 'Introduce F block' + bcolors.ENDC
-			print 'Place Correct block on pad'
-			CorD = ['C', 'D', 'E', 'F']
-			currNote = random.choice(CorD)
-			noteToPlay = currNote + '4'
-			score += 1
-			print 'Your score is  ' + str(score)
-			if score == 20:
-				level = -5
-			if score < -5:
-				score = 0
-			if score <20:
-				play( noteToPlay , 'Flutenonvib')
-				win = False
-
-		elif win == 'wrong':
-			score -= 1
-			win = False
-		elif win == False:
-			myData = arduinoSerialData.readline()
-			myd = myData.splitlines()  
-			for item in myd:
-				win = assess(item, currNote, 'Flutenonvib', score)
-
-while level == -5:
-
-	if (arduinoSerialData.inWaiting()>0):
-
-		if win == True:
-			print 'Training mode'
-			print bcolors.HEADER + 'Introduce G block' + bcolors.ENDC
-			print 'Place Correct block on pad'
-			CorD = ['C', 'D', 'E', 'F', 'G']
-			currNote = random.choice(CorD)
-			noteToPlay = currNote + '4'
-			score += 1
-			print 'Your score is  ' + str(score)
-			if score == 30:
-				level = -4
-			if score < -5:
-				score = 0
-			if score < 30:
-				play( noteToPlay , 'Flutenonvib')
-				win = False
-
-		elif win == 'wrong':
-			score -= 1
-			win = False
-		elif win == False:
-			myData = arduinoSerialData.readline()
-			myd = myData.splitlines()  
-			for item in myd:
-				win = assess(item, currNote, 'Flutenonvib', score)
-
-while level == -4:
-
-	if (arduinoSerialData.inWaiting()>0):
-
-		if win == True:
-			print 'Training mode'
-			print bcolors.HEADER + 'Introduce A block' + bcolors.ENDC
-			print 'Place Correct block on pad'
-			CorD = ['A', 'C', 'D', 'E', 'F', 'G']
-			currNote = random.choice(CorD)
-			noteToPlay = currNote + '4'
-			score += 1
-			print 'Your score is  ' + str(score)
-			if score == 40:
-				level = -3
-			if score < -5:
-				score = 0
-			if score < 40:
-				play( noteToPlay , 'Flutenonvib')
-				win = False
-
-		elif win == 'wrong':
-			score -= 1
-			win = False
-		elif win == False:
-			myData = arduinoSerialData.readline()
-			myd = myData.splitlines()  
-			for item in myd:
-				win = assess(item, currNote, 'Flutenonvib', score)
-
-
-while level == -3:
-
-	if (arduinoSerialData.inWaiting()>0):
-
-		if win == True:
-			print 'Training mode'
-			print bcolors.HEADER + 'Introduce B block' + bcolors.ENDC
-			print 'Place Correct block on pad'
-			CorD = ['A', 'B', 'C', 'D', 'E', 'F', 'G']
-			currNote = random.choice(CorD)
-			noteToPlay = currNote + '4'
-			score += 1
-			print 'Your score is  ' + str(score)
-			if score == 50:
-				level = -2
-			if score < -5:
-				score = 0
-			if score < 50:
-				play( noteToPlay , 'Flutenonvib')
-				win = False
-
-		elif win == 'wrong':
-			score -= 1
-			win = False
-		elif win == False:
-			myData = arduinoSerialData.readline()
-			myd = myData.splitlines()  
-			for item in myd:
-				win = assess(item, currNote, 'Flutenonvib', score)
-while level == -2:
-
-	if (arduinoSerialData.inWaiting()>0):
-
-		if win == True:
-			print 'Training mode'
-			print bcolors.HEADER + 'Introduce new tones' + bcolors.ENDC
-			print 'Place Correct block on pad'
-			CorD = ['C']
-			currNote = random.choice(CorD)
-			trainingInstruments = ['trumpet', 'Flutenonvib']
-			instrumentToPlay = random.choice(trainingInstruments)
-			noteToPlay = currNote + '4'
-			score += 1
-			print 'Your score is  ' + str(score)
-			if score == 54:
-				level = -1
-			if score < -5:
-				score = 0
-			if score < 54:
-				play( noteToPlay , instrumentToPlay)
-				win = False
-
-		elif win == 'wrong':
-			score -= 1
-			win = False
-		elif win == False:
-			myData = arduinoSerialData.readline()
-			myd = myData.splitlines()  
-			for item in myd:
-				win = assess(item, currNote, instrumentToPlay, score)
-
-while level == -1:
-
-	if (arduinoSerialData.inWaiting()>0):
-
-		if win == True:
-			print 'Training mode'
-			print bcolors.HEADER + 'Introduce A block' + bcolors.ENDC
-			print 'Place Correct block on pad'
-			CorD = ['A', 'B', 'C', 'D', 'E', 'F', 'G']
-			currNote = random.choice(CorD)
-			noteToPlay = currNote + '4'
-			score += 1
-			print 'Your score is  ' + str(score)
-			if score == 70:
-				print "Congradulations!!! You have completed training!"
-				level = 0
-			if score < -5:
-				score = 0
-			if score < 70:
-				play( noteToPlay , instrumentToPlay)
-				win = False
-
-		elif win == 'wrong':
-			score -= 1
-			win = False
-		elif win == False:
-			myData = arduinoSerialData.readline()
-			myd = myData.splitlines()  
-			for item in myd:
-				win = assess(item, currNote, instrumentToPlay, score)
-
-
-
-
-#todo add easy modes, start with 2 diff notes, then progresively add note, then add octives with prompt on which its in. then remove prompt. then add diff instruments, the
-# while  x == 3:
-# 	play(G4, horn)
-
-
-# PyAudio = pyaudio.PyAudio
-# BITRATE = 16000 #number of frames per second/frameset.      
-# FREQUENCY = 261.63 #Hz, waves per second, 261.63=C4-note.
-# LENGTH = 3 #seconds to play sound
-
-# NUMBEROFFRAMES = int(BITRATE * LENGTH)
-# RESTFRAMES = NUMBEROFFRAMES % BITRATE
-# WAVEDATA = ''    
-
-
-# for x in xrange(NUMBEROFFRAMES):
-#  WAVEDATA = WAVEDATA+chr(int(math.sin(x/((BITRATE/FREQUENCY)/math.pi))*127+128))    
-
-# #fill remainder of frameset with silence
-# for x in xrange(RESTFRAMES): 
-#  WAVEDATA = WAVEDATA+chr(128)
-
-# p = PyAudio()
-# stream = p.open(format = p.get_format_from_width(1), 
-#                 channels = 1, 
-#                 rate = BITRATE, 
-#                 output = True)
-# stream.write(WAVEDATA)
-# stream.stop_stream()
-# stream.close()
-# p.terminate()
+# # p = PyAudio()
+# # stream = p.open(format = p.get_format_from_width(1), 
+# #                 channels = 1, 
+# #                 rate = BITRATE, 
+# #                 output = True)
+# # stream.write(WAVEDATA)
+# # stream.stop_stream()
+# # stream.close()
+# # p.terminate()
