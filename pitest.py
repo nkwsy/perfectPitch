@@ -141,8 +141,10 @@ while mode == 1:
 	#playC5()
 	play( 'C4' , instrumentToPlay)
 
+	#myData = (error, data) = 
+	myData = rdr.request()
 	myd = myData.splitlines(data)  
-
+	print myd
 	if not error:
 		print("Card read UID: "+str(uid[0])+","+str(uid[1])+","+str(uid[2])+","+str(uid[3]))
 		# if win == True:
