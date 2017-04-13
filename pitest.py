@@ -8,7 +8,7 @@ from pirc522 import RFID
 import signal
 import time
 import sys
-from assets.py import bcolors
+from assets import bcolors
 
 
 pi = "/home/pi/perfectPitch/sounds/"
