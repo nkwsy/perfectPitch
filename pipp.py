@@ -5,7 +5,7 @@ import wave
 import random
 import time
 import multiprocessing
-import psycopg2
+#import psycopg2
 
 from pirc522 import RFID
 import signal
@@ -19,7 +19,8 @@ import time
 # conn = psycopg2.connect(conn_string)
 
 
-
+home = "/Users/me/projects/perfectpitch/sounds/"
+pi = "/home/pi/perfectpitch/sounds/"
 
 
 
@@ -42,7 +43,7 @@ def play(note, instrument):
 	chunk = 1024  
 
 	#open a wav format music  
-	f = wave.open(r"/Users/me/projects/perfectpitch/" + instrument + "/" + note + ".wav","rb")  
+	f = wave.open(r"/home/pi/perfectpitch/sounds/" + instrument + "/" + note + ".wav","rb")  
 	#instantiate PyAudio  
 	p = pyaudio.PyAudio()  
 	#open stream  
