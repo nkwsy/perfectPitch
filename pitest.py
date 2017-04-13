@@ -19,6 +19,7 @@ util = rdr.util()
 # Set util debug to true - it will print what's going on
 util.debug = True
 
+win = False
 def play(note, instrument):
 	#define stream chunk   
 	chunk = 1024  
