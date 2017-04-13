@@ -139,41 +139,46 @@ while mode == 1:
 	instrumentToPlay = 'Flutenonvib'
 	noteToPlay = '4'
 	#playC5()
+	play( noteToPlay , instrumentToPlay)
+
+	myd = myData.splitlines(data)  
+
 	if not error:
-		if win == True:
+		print("Card read UID: "+str(uid[0])+","+str(uid[1])+","+str(uid[2])+","+str(uid[3]))
+		# if win == True:
 
-			##### Use tone 
-			currNote = random.choice(note)
-			noteToPlay = currNote + toneToPlay
-			# instrumentToPlay = random.choice(instrument)
-			print noteToPlay
-			if correct == True:
-				score += 1
-				print 'Your score is  ' + str(score)
-			if correct == False:
-				correct = True
-			if score == 10:
-				level = 2
-			if score < -5:
-				score = 0
-			if score < 10:
-				play( noteToPlay , 'Flutenonvib')
-				win = False
-			score += 1
-			print 'Your score is  ' + str(score)
-			play( noteToPlay , instrumentToPlay)
+		# 	##### Use tone 
+		# 	currNote = random.choice(note)
+		# 	noteToPlay = currNote + toneToPlay
+		# 	# instrumentToPlay = random.choice(instrument)
+		# 	print noteToPlay
+		# 	if correct == True:
+		# 		score += 1
+		# 		print 'Your score is  ' + str(score)
+		# 	if correct == False:
+		# 		correct = True
+		# 	if score == 10:
+		# 		level = 2
+		# 	if score < -5:
+		# 		score = 0
+		# 	if score < 10:
+		# 		play( noteToPlay , 'Flutenonvib')
+		# 		win = False
+		# 	score += 1
+		# 	print 'Your score is  ' + str(score)
+		# 	play( noteToPlay , instrumentToPlay)
 
-			win = False
-			print bcolors.BOLD + 'What tone is that?' + bcolors.ENDC
-			print bcolors.HEADER +'Scan the proper card' + bcolors.ENDC
-		elif win == 'wrong':
-			score -= 1
-			win = False
-		elif win == False:
-			myData = (error, data) = rdr.request()
-			myd = myData.splitlines(data)  
-			for item in myd:
-				win = assess(item, currNote, instrumentToPlay, score)
+		# 	win = False
+		# 	print bcolors.BOLD + 'What tone is that?' + bcolors.ENDC
+		# 	print bcolors.HEADER +'Scan the proper card' + bcolors.ENDC
+		# elif win == 'wrong':
+		# 	score -= 1
+		# 	win = False
+		# elif win == False:
+
+		# 	myd = myData.splitlines(data)  
+		# 	for item in myd:
+		# 		win = assess(item, currNote, instrumentToPlay, score)
 
 
 
