@@ -389,7 +389,8 @@ while level == 0:
 while level == 1:
 	rdr.wait_for_tag()
     # Request tag
-    (error, data) = rdr.request()
+	(error, data) = rdr.request()
+	
 	# print toneToPlay
 	instrumentToPlay = 'Flutenonvib'
 	toneToPlay = '4'
