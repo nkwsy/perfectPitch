@@ -52,10 +52,10 @@ def assess(item, currNote, instrumentToPlay, score):
 					return False
 
 
-	#play stream  
-	while data:  
-	    stream.write(data)  
-	    data = f.readframes(chunk)  
+	#play stream
+	while data:
+		stream.write(data)  
+		data = f.readframes(chunk)  
 
 	#stop stream  
 	stream.stop_stream()  
@@ -131,7 +131,7 @@ while mode == '4' :
 
 while mode == 1:
 	rdr.wait_for_tag()
-    # Request tag
+	# Request tag
 	(error, data) = rdr.request()
 	# print toneToPlay
 	instrumentToPlay = 'Flutenonvib'
