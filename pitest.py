@@ -20,6 +20,37 @@ util = rdr.util()
 util.debug = True
 
 win = False
+
+
+####### RFID UTIL  ##########
+def rfidread(targetTag)
+
+    run = True
+    rdr = RFID()
+    util = rdr.util()
+    util.debug = True
+
+    rdr.wait_for_tag()
+
+    (error, data) = rdr.request()
+    if not error:
+        print("\nDetected: " + format(data, "02x"))
+
+    (error, uid) = rdr.anticoll()
+    if not error:
+        tag = (str(uid[2])+str(uid[3]))
+        print(str(uid[2])+str(uid[3]))
+        
+        if targetTag == tag:
+            print 'TRUE'
+            win = True
+        else:
+            print 'False'
+            win = False
+
+    time.sleep(1)
+
+
 def play(note, instrument):
 	#define stream chunk   
 	chunk = 1024  
@@ -92,17 +123,17 @@ insult = ['YOU SUCK','YOUR A LOSER', 'TONE DEF IDIOT', 'MELLON TELLER!!', 'you a
 
 
 cards = {}
-cards['A'] = 'Card UID: 04 17 9F 0A D7 49 80'
-cards['Ab'] = 'Card UID: 04 2D 62 0A D7 49 80'
-cards['B'] = 'Card UID: 04 3F 91 0A D7 49 80'
-cards['Bb'] = 'Card UID: 04 38 5B 0A D7 49 80'
-cards['C'] = 'Card UID: 04 3F DE 0A D7 49 80'
-cards['D'] = 'Card UID: 04 29 83 0A D7 49 80'
+cards['A'] = '23159'
+cards['Ab'] = '4598'
+cards['B'] = '63145'
+cards['Bb'] = '5691'
+cards['C'] = '63222'
+cards['D'] = '41131'
 cards['Db'] = 'XXXX'
-cards['E'] = 'Card UID: 04 29 C2 0A D7 49 80'
+cards['E'] = '41194'
 cards['Eb'] = 'XXXX'
-cards['F'] = 'Card UID: 04 43 94 0A D7 49 80'
-cards['G'] = 'Card UID: 04 4D D9 0A D7 49 80'
+cards['F'] = '67148'
+cards['G'] = '77217'
 cards['Gb'] = 'XXXX'
 
 
@@ -132,29 +163,30 @@ while mode == '4' :
 
 
 while mode == 1:
-	rdr.wait_for_tag()
-	# Request tag
-	(error, uid) = rdr.request()
-	# print toneToPlay
+	
+
 	instrumentToPlay = 'Flutenonvib'
 	toneToPlay = '4'
 	#playC5()
-	play( 'C4' , instrumentToPlay)
+	play( 'C' , instrumentToPlay)
 
-	#myData = (error, data) = 
-	myData = rdr.request()
-	print myData
-	if not error:
-		print("\nDetected")
-		# (error, uid) = rdr.anticoll()
-		#if not error:
-		print(str(uid))
-		print("Card read UID: "+str(uid[0])+","+str(uid[1])+","+str(uid[2])+","+str(uid[3]))
 
-		
-		print("Reading block 10: " + str(rdr.read(10)))
-		# Always stop crypto1 when done working
-		rdr.stop_crypto()
+	if hints == TRUE:
+		print toneToPlay
+
+
+
+	rfidread(cards['C'])
+	if win == True:
+		print "FUCK YEAH!!!"
+	if win == False:
+		print bcolors.FAIL + random.choice(insult) + bcolors.ENDC
+
+
+
+
+
+
 		#print("Card read UID: "+str(uid[0])+","+str(uid[1])+","+str(uid[2])+","+str(uid[3]))
 
 		#print("Card read UID: "+str(uid[0])+","+str(uid[1])+","+str(uid[2])+","+str(uid[3]))
