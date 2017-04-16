@@ -23,7 +23,7 @@ win = False
 
 
 ####### RFID UTIL  ##########
-def rfidread(targetTag)
+def rfidread(targetTag):
 
     run = True
     rdr = RFID()
