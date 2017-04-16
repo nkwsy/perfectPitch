@@ -118,6 +118,8 @@ def rfidread(targetTag):
         
         if targetTag == tag:
             print 'TRUE'
+            win = True
         else:
             print 'False'
+            win = False
     time.sleep(1)
