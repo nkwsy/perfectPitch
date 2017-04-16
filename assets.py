@@ -5,6 +5,8 @@ from pirc522 import RFID
 import signal
 import time
 import sys
+import pyaudio
+import random
 
 cards = {}
 cards['A'] = '23159'
