@@ -14,7 +14,6 @@ from pirc522 import RFID
 from assets import rfidread
 import assets
 
-
 cards = {}
 cards['A'] = '23159'
 cards['Ab'] = '4598'
@@ -29,14 +28,36 @@ cards['F'] = '67148'
 cards['G'] = '77217'
 cards['Gb'] = 'XXXX'
 
+sounds = {}
+sounds['horn'] = ['2', '3', '4']
+sounds['AltoFluteVib'] = [ '4', '5']
+sounds['AltoSaxNoVib'] = [ '4']
+sounds['AltoSaxvib'] = ['3', '4']
+sounds['BassClarinet'] = ['3','4','5']
+sounds['BassFlute'] = ['3','4','5']
+sounds['Bassoon'] = ['2','4']
+sounds['BbClarinet'] = ['4','5','6']
+sounds['EbClarinet'] = ['4','5','6']
+sounds['Flutenonvib'] = ['4','5','6']
+sounds['SopSax'] = ['4','5']
+sounds['SopSaxVib'] = ['4','5']
+sounds['trumpet'] = ['4','5']
+
+tone = ['2', '3', '4']
+note = ['A', 'Ab', 'B', 'Bb', 'C', 'D', 'E', 'F','G']
+ #['A', 'Ab' 'B', 'Bb', 'C', 'D', 'Db',  'E', 'Eb',  'F','G', 'Gb']
+instrument = ['AltoFluteVib', 'AltoSaxNoVib', 'AltoSaxvib', 'BassClarinet', 'BassFlute', 'Bassoon', 'BbClarinet', 'EbClarinet', 'EbClarinet']
+
+insult = ['YOU SUCK','YOUR A LOSER', 'TONE DEF IDIOT', 'MELLON TELLER!!', 'you are useless', 'I have never met anyone more disapointing than you']
+
 
 x = 1
 
 if x == 1:
 
 
-    currNote = random.choice(assets.choices(note))
-    toneToPlay = random.choice(choices(tone))
+    currNote = random.choice(note)
+    toneToPlay = random.choice(tone)
     noteToPlay = currNote + toneToPlay
 
     play(note, instrument)
