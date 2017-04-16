@@ -4,24 +4,10 @@ import time
 import sys
 
 from pirc522 import RFID
+from assets import rfidread
+import assets
 
-# run = True
-# rdr = RFID()
-# util = rdr.util()
-# util.debug = True
 
-# print("Starting")
-# while run:
-#     rdr.wait_for_tag()
-
-#     (error, data) = rdr.request()
-#     if not error:
-#         print("\nDetected: " + format(data, "02x"))
-
-#     (error, uid) = rdr.anticoll()
-#     if not error:
-#         print("Card read UID: "+str(uid[2])+str(uid[3]))
-#     time.sleep(1)
 cards = {}
 cards['A'] = '23159'
 cards['Ab'] = '4598'
@@ -37,29 +23,19 @@ cards['G'] = '77217'
 cards['Gb'] = 'XXXX'
 
 
+x = 1
 
-def rfidread(targetTag)
+if x == 1:
 
-    run = True
-    rdr = RFID()
-    util = rdr.util()
-    util.debug = True
 
-    rdr.wait_for_tag()
+    currNote = random.choice(note)
+    noteToPlay = currNote + toneToPlay
 
-    (error, data) = rdr.request()
-    if not error:
-        print("\nDetected: " + format(data, "02x"))
+    play(note, instrument)
 
-    (error, uid) = rdr.anticoll()
-    if not error:
-        tag = (str(uid[2])+str(uid[3]))
-        print(str(uid[2])+str(uid[3]))
-        
-        if targetTag == tag:
-            print 'TRUE'
-        else:
-            print 'False'
-    time.sleep(1)
+    rfidread(cards[currNote])
 
-rfidread(cards['A'])
+    if win == True:
+        print 'great'
+    else:
+        print 'NOPE'
