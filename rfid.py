@@ -60,7 +60,7 @@ if x == 1:
     toneToPlay = random.choice(tone)
     noteToPlay = currNote + toneToPlay
 
-    play(note, instrument)
+    assets.play(note, instrument)
 
     rfidread(cards[currNote])
 
