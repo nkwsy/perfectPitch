@@ -146,7 +146,7 @@ while mode == 1:
 	print data
 	if not error:
 		print("\nDetected")
-		(error, uid) = rdr.anticoll()
+		# (error, uid) = rdr.anticoll()
 		#if not error:
 		print(str(uid))
 		print("Card read UID: "+str(uid[0])+","+str(uid[1])+","+str(uid[2])+","+str(uid[3]))
