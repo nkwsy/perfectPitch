@@ -1,7 +1,14 @@
-
+import math
+import pyaudio
+import wave
+import random
+import time
+import multiprocessing
+from pirc522 import RFID
 import signal
 import time
 import sys
+from assets import bcolors
 
 from pirc522 import RFID
 from assets import rfidread
