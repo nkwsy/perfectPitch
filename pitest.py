@@ -168,7 +168,7 @@ while mode == 1:
 	instrumentToPlay = 'Flutenonvib'
 	toneToPlay = '4'
 	#playC5()
-	play( 'C' , instrumentToPlay)
+	play( 'C4' , instrumentToPlay)
 
 
 	if hints == TRUE:
