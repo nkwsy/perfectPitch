@@ -35,7 +35,7 @@ x = 1
 if x == 1:
 
 
-    currNote = random.choice(note)
+    currNote = random.choice(choices(note)
     noteToPlay = currNote + toneToPlay
 
     play(note, instrument)
