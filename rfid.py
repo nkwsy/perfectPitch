@@ -61,7 +61,7 @@ if x == 1:
 
     assets.play(noteToPlay, currInstrument)
 
-    rfidread(cards[currNote])
+    win = rfidread(cards[currNote])
 
     if win == True:
         print 'great'
