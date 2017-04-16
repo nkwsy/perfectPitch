@@ -134,7 +134,7 @@ while mode == '4' :
 while mode == 1:
 	rdr.wait_for_tag()
 	# Request tag
-	(error, data) = rdr.request()
+	(error, data, uid) = rdr.request()
 	# print toneToPlay
 	instrumentToPlay = 'Flutenonvib'
 	toneToPlay = '4'
@@ -149,6 +149,8 @@ while mode == 1:
 		(error, uid) = rdr.anticoll()
 		#if not error:
 		print(str(uid))
+		print("Card read UID: "+str(uid[0])+","+str(uid[1])+","+str(uid[2])+","+str(uid[3]))
+
 		
 		print("Reading block 10: " + str(rdr.read(10)))
 		# Always stop crypto1 when done working
