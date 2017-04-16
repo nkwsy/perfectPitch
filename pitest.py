@@ -20,6 +20,7 @@ util = rdr.util()
 util.debug = True
 
 win = False
+hints = False
 
 
 ####### RFID UTIL  ##########
@@ -171,7 +172,7 @@ while mode == 1:
 	play( 'C4' , instrumentToPlay)
 
 
-	if hints == TRUE:
+	if hints == True:
 		print toneToPlay
 
 
