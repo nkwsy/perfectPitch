@@ -134,7 +134,7 @@ while mode == '4' :
 while mode == 1:
 	rdr.wait_for_tag()
 	# Request tag
-	(error, data, uid) = rdr.request()
+	(error, uid) = rdr.request()
 	# print toneToPlay
 	instrumentToPlay = 'Flutenonvib'
 	toneToPlay = '4'
@@ -143,7 +143,7 @@ while mode == 1:
 
 	#myData = (error, data) = 
 	myData = rdr.request()
-	print data
+	print myData
 	if not error:
 		print("\nDetected")
 		# (error, uid) = rdr.anticoll()
