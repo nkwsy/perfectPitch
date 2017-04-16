@@ -1,6 +1,5 @@
 import math
 import pyaudio
-import wave
 import random
 import time
 import multiprocessing
@@ -55,12 +54,12 @@ x = 1
 
 if x == 1:
 
-
+    currInstrument = random.choice(instrument)
     currNote = random.choice(note)
     toneToPlay = random.choice(tone)
     noteToPlay = currNote + toneToPlay
 
-    assets.play(note, instrument)
+    assets.play(noteToPlay, currInstrument)
 
     rfidread(cards[currNote])
 
