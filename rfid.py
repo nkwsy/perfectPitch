@@ -76,15 +76,16 @@ while x == 1:
 while x == 2:
     if score < 3:
         instrumentChoices = ['Flutenonvib']
-        instrumentToPlay =  random.choice(instrumentChoices)
-        currNote = ['C']
+        noteChoices = ['C']
+        toneChoices = ['4']
 
-        noteChoices = ['4']
-        toneToPlay = random.choice(noteChoices)
+        instrumentToPlay =  random.choice(instrumentChoices)
+        toneToPlay = random.choice(toneChoices)
+        toneToPlay = random.choice(toneChoices)
         noteToPlay = currNote + toneToPlay
 
-
         assets.play(noteToPlay, currInstrument)
+
         win = rfidread(cards[currNote])
         if win == True:
             print 'great'
