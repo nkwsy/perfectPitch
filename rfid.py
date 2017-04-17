@@ -49,10 +49,11 @@ instrument = ['AltoFluteVib', 'AltoSaxNoVib', 'AltoSaxvib', 'BassClarinet', 'Bas
 
 insult = ['YOU SUCK','YOUR A LOSER', 'TONE DEF IDIOT', 'MELLON TELLER!!', 'you are useless', 'I have never met anyone more disapointing than you']
 
+score = 0
 
 x = 1
 
-if x == 1:
+while x == 1:
 
     currInstrument = random.choice(instrument)
     currNote = random.choice(note)
@@ -65,5 +66,25 @@ if x == 1:
 
     if win == True:
         print 'great'
+        score += 1
     else:
         print random.choice(insult)
+    
+
+while x == 2:
+    
+    instrumentChoices = ['Flutenonvib', 'AltoFluteVib']
+    instrumentToPlay =  random.choice(instrumentChoices)
+    noteChoices = ['4', '5']
+    toneToPlay = random.choice(noteChoices)
+
+
+    assets.play(noteToPlay, currInstrument)
+    win = rfidread(cards[currNote])
+    if win == True:
+        print 'great'
+        score += 1
+    else:
+        print random.choice(insult)
+    return
+
