@@ -74,7 +74,7 @@ while x == 1:
     
 
 while x == 2:
-    if score > 3 
+    if score > 3:
         instrumentChoices = ['Flutenonvib']
         instrumentToPlay =  random.choice(instrumentChoices)
         noteChoices = ['4']
