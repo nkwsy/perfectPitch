@@ -57,10 +57,10 @@ x = 2
 
 while x == 1:
 
-        instrumentToPlay =  random.choice(instrumentChoices)
-        toneToPlay = random.choice(toneChoices)
-        noteToPlay = random.choice(noteChoices)
-        soundToPlay = noteToPlay + toneToPlay
+    instrumentToPlay =  random.choice(instrumentChoices)
+    toneToPlay = random.choice(toneChoices)
+    noteToPlay = random.choice(noteChoices)
+    soundToPlay = noteToPlay + toneToPlay
 
     assets.play(soundToPlay, instrumentToPlay)
 
