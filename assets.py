@@ -114,7 +114,7 @@ def rfidread(targetTag):
 	    rdr.cleanup()
 	    sys.exit()
 
-signal.signal(signal.SIGINT, end_read)
+	signal.signal(signal.SIGINT, end_read)
 
     if not error:
         print("\nDetected: " + format(data, "02x"))
