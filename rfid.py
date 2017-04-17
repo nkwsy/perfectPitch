@@ -64,7 +64,7 @@ while x == 1:
 
     assets.play(soundToPlay, instrumentToPlay)
 
-    win = rfidread(cards[soundToPlay])
+    win = rfidread(cards[noteToPlay])
 
     if win == True:
         print 'great'
@@ -86,7 +86,7 @@ while x == 2:
 
         assets.play(soundToPlay, instrumentToPlay)
 
-        win = rfidread(cards[soundToPlay])
+        win = rfidread(cards[noteToPlay])
         if win == True:
             print 'great'
             score += 1
