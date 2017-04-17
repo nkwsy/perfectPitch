@@ -130,5 +130,5 @@ def rfidread(targetTag):
         else:
             print 'False'
             return False
-
+    rdr.request()
     time.sleep(1)
