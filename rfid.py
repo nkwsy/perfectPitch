@@ -79,6 +79,7 @@ while x == 2:
         instrumentToPlay =  random.choice(instrumentChoices)
         noteChoices = ['4']
         toneToPlay = random.choice(noteChoices)
+        noteToPlay = currNote + toneToPlay
 
 
         assets.play(noteToPlay, currInstrument)
