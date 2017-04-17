@@ -66,4 +66,4 @@ if x == 1:
     if win == True:
         print 'great'
     else:
-        print 'NOPE'
+        print random.choice(insult)

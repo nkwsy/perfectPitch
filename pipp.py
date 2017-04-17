@@ -28,6 +28,36 @@ import sys
 #### convert aif to wav in terminal using ffmpeg by typing:
 ###### for f in *.aif; do ffmpeg -i "$f" "${f%.aiff}.wav"; done
 
+##### RFID READ LOGIC #########
+def rfidread(targetTag)
+
+    run = True
+    rdr = RFID()
+    util = rdr.util()
+    util.debug = True
+
+    rdr.wait_for_tag()
+
+    (error, data) = rdr.request()
+    if not error:
+        print("\nDetected: " + format(data, "02x"))
+
+    (error, uid) = rdr.anticoll()
+    if not error:
+        tag = (str(uid[2])+str(uid[3]))
+        print(str(uid[2])+str(uid[3]))
+        
+        if targetTag == tag:
+            print 'TRUE'
+        else:
+            print 'False'
+    time.sleep(1)
+    
+    run = False
+    rdr.cleanup()
+	sys.exit()
+
+
 class bcolors:
     HEADER = '\033[95m'
     OKBLUE = '\033[94m'
@@ -109,17 +139,17 @@ rfidstart= rdr.wait_for_tag()
 # f = 'Card UID: 04 43 94 0A D7 49 80'
 # g = 'Card UID: 04 4D D9 0A D7 49 80'
 cards = {}
-cards['A'] = 'Card UID: 04 17 9F 0A D7 49 80'
-cards['Ab'] = 'Card UID: 04 2D 62 0A D7 49 80'
-cards['B'] = 'Card UID: 04 3F 91 0A D7 49 80'
-cards['Bb'] = 'Card UID: 04 38 5B 0A D7 49 80'
-cards['C'] = 'Card UID: 04 3F DE 0A D7 49 80'
-cards['D'] = 'Card UID: 04 29 83 0A D7 49 80'
+cards['A'] = '23159'
+cards['Ab'] = '4598'
+cards['B'] = '63145'
+cards['Bb'] = '5691'
+cards['C'] = '63222'
+cards['D'] = '41131'
 cards['Db'] = 'XXXX'
-cards['E'] = 'Card UID: 04 29 C2 0A D7 49 80'
+cards['E'] = '41194'
 cards['Eb'] = 'XXXX'
-cards['F'] = 'Card UID: 04 43 94 0A D7 49 80'
-cards['G'] = 'Card UID: 04 4D D9 0A D7 49 80'
+cards['F'] = '67148'
+cards['G'] = '77217'
 cards['Gb'] = 'XXXX'
 
 
@@ -188,9 +218,6 @@ while x == 1 :
 
 			else:
 				print 'NONE'
-
-
-# 
 
 def assess(item, currNote, instrumentToPlay, score):
 
@@ -437,8 +464,7 @@ while level == 1:
 			win = False
 		elif win == False:
 			myData = (error, data) = rdr.request()
-
-			myd = myData.splitlines()  
+			myd = myData.splitlines(data)  
 			for item in myd:
 				win = assess(item, currNote, instrumentToPlay, score)
 
