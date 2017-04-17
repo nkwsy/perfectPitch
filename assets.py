@@ -122,5 +122,6 @@ def rfidread(targetTag):
         else:
             print 'False'
             return False
-    gpio.cleanup()
+    rdr.cleanup()
+	sys.exit()
     time.sleep(1)
