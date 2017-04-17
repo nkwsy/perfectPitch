@@ -119,17 +119,16 @@ def rfidread(targetTag):
     if not error:
         print("\nDetected: " + format(data, "02x"))
 
-    (error, uid) = rdr.anticoll()
-    if not error:
-        tag = (str(uid[2])+str(uid[3]))
-        print(str(uid[2])+str(uid[3]))
-        
-        if targetTag == tag:
-            print 'TRUE'
-            return True
-        else:
-            print 'False'
-            return False
-    	rdr.request()
+    	(error, uid) = rdr.anticoll()
+	    if not error:
+	        tag = (str(uid[2])+str(uid[3]))
+	        print(str(uid[2])+str(uid[3]))
+	        
+	        if targetTag == tag:
+	            print 'TRUE'
+	            return True
+	        else:
+	            print 'False'
+	            return False
     rdr.cleanup()
     time.sleep(1)
