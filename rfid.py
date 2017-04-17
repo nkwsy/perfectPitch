@@ -120,11 +120,9 @@ while x == 2:
             wrong += 1
 
 while x == 3:
-    instrumentToPlay =  random.choice(instrumentChoices)
-    toneToPlay = random.choice(toneChoices)
-    noteToPlay = random.choice(noteChoices)
-    soundToPlay = noteToPlay + toneToPlay
-
+    instrumentChoices = ['Flutenonvib']
+    noteChoices = ['C']
+    toneChoices = ['4']
     randomChoice(instrumentChoices, noteChoices, toneChoices)
     pass
 
