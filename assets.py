@@ -95,15 +95,15 @@ class bcolors:
 
 
 
-
+run = True
+rdr = RFID()
+util = rdr.util()
+util.debug = True
 
 
 def rfidread(targetTag):
 
-    run = True
-    rdr = RFID()
-    util = rdr.util()
-    util.debug = True
+
 
     rdr.wait_for_tag()
     (error, data) = rdr.request()
@@ -120,7 +120,7 @@ def rfidread(targetTag):
         print("\nDetected: " + format(data, "02x"))
 
     	(error, uid) = rdr.anticoll()
-	    if not error:
+        if not error:
 	        tag = (str(uid[2])+str(uid[3]))
 	        print(str(uid[2])+str(uid[3]))
 	        
