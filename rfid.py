@@ -86,5 +86,4 @@ while x == 2:
         score += 1
     else:
         print random.choice(insult)
-    return
 
