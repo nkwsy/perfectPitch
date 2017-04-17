@@ -123,5 +123,5 @@ def rfidread(targetTag):
             print 'False'
             return False
     rdr.cleanup()
-	sys.exit()
+    sys.exit()
     time.sleep(1)
