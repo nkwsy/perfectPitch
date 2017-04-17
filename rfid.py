@@ -57,12 +57,12 @@ x = 2
 
 while x == 1:
 
-    currInstrument = random.choice(instrument)
-    currNote = random.choice(note)
-    toneToPlay = random.choice(tone)
-    noteToPlay = currNote + toneToPlay
+        instrumentToPlay =  random.choice(instrumentChoices)
+        toneToPlay = random.choice(toneChoices)
+        noteToPlay = random.choice(noteChoices)
+        soundToPlay = noteToPlay + toneToPlay
 
-    assets.play(noteToPlay, currInstrument)
+    assets.play(soundToPlay, instrumentToPlay)
 
     win = rfidread(cards[currNote])
 
@@ -81,10 +81,10 @@ while x == 2:
 
         instrumentToPlay =  random.choice(instrumentChoices)
         toneToPlay = random.choice(toneChoices)
-        toneToPlay = random.choice(toneChoices)
-        noteToPlay = currNote + toneToPlay
+        noteToPlay = random.choice(noteChoices)
+        soundToPlay = noteToPlay + toneToPlay
 
-        assets.play(noteToPlay, currInstrument)
+        assets.play(soundToPlay, instrumentToPlay)
 
         win = rfidread(cards[currNote])
         if win == True:
