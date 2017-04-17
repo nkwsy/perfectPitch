@@ -77,6 +77,8 @@ while x == 2:
     if score < 3:
         instrumentChoices = ['Flutenonvib']
         instrumentToPlay =  random.choice(instrumentChoices)
+        currNote = ['C']
+
         noteChoices = ['4']
         toneToPlay = random.choice(noteChoices)
         noteToPlay = currNote + toneToPlay
