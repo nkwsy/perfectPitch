@@ -52,6 +52,30 @@ insult = ['YOU SUCK','YOUR A LOSER', 'TONE DEF IDIOT', 'MELLON TELLER!!', 'you a
 score = 0
 wrong = 0
 
+########################################
+#### create logic to take instrument data and play challenge
+#### TODO create blacklist of notes not on certain instruments, if random choice is on blacklist, do not use in challenge
+
+def randomChoice(instrumentChoices, noteChoices, toneChoices):
+    instrumentToPlay =  random.choice(instrumentChoices)
+    toneToPlay = random.choice(toneChoices)
+    noteToPlay = random.choice(noteChoices)
+    soundToPlay = noteToPlay + toneToPlay
+
+    assets.play(soundToPlay, instrumentToPlay)
+    win = rfidread(cards[noteToPlay])
+    if win == True:
+        print 'great'
+        score += 1
+        print score
+    else:
+        print random.choice(insult)
+        wrong += 1
+
+    return score
+########################################
+
+
 
 x = 2
 
@@ -95,5 +119,13 @@ while x == 2:
             print random.choice(insult)
             wrong += 1
 
+while x == 3:
+    instrumentToPlay =  random.choice(instrumentChoices)
+    toneToPlay = random.choice(toneChoices)
+    noteToPlay = random.choice(noteChoices)
+    soundToPlay = noteToPlay + toneToPlay
+
+    randomChoice(instrumentChoices, noteChoices, toneChoices)
+    pass
 
 
