@@ -108,13 +108,13 @@ def rfidread(targetTag):
     rdr.wait_for_tag()
     (error, data) = rdr.request()
     def end_read(signal,frame):
-	    global run
-	    print("\nCtrl+C captured, ending read.")
-	    run = False
-	    rdr.cleanup()
-	    sys.exit()
+        global run
+        print("\nCtrl+C captured, ending read.")
+        run = False
+        rdr.cleanup()
+        sys.exit()
 
-	signal.signal(signal.SIGINT, end_read)
+    signal.signal(signal.SIGINT, end_read)
 
     if not error:
         print("\nDetected: " + format(data, "02x"))
