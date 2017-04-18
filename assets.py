@@ -51,13 +51,15 @@ def play(note, instrument):
 
 	#open a wav format music  
 	f = wave.open(r"/home/pi/perfectPitch/sounds/" + instrument + "/" + note + ".wav","rb")  
+
 	#instantiate PyAudio  
 	p = pyaudio.PyAudio()  
 	#open stream  
-	stream = p.open(format = p.get_format_from_width(f.getsampwidth()),  
-	                channels = f.getnchannels(),  
-	                rate = f.getframerate(),  
-	                output = True)  
+	# stream = p.open(format = p.get_format_from_width(f.getsampwidth()),  
+	#                 channels = f.getnchannels(),  
+	#                 rate = f.getframerate(),  
+	#                 output = True)  
+	stream = p.open(format = pyaudio.paInt16, channels = 2, rate = 44100, frames_per_buffer = 2048, output = True, input = False, output_device_index = 0, stream_callback = callback)
 	#read data  
 	data = f.readframes(chunk)  
 
