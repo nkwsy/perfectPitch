@@ -76,8 +76,13 @@ def randomChoice(instrumentChoices, noteChoices, toneChoices):
         return False
 
     #return score
+
+def percentage(part, whole):
+  return 100 * float(part)/float(whole)
 def answerRead(score, wrong):
-    accuracy = (score/wrong)
+    whole = score + wrong
+    accuracy = percentage(score, whole)
+
     print 'Correct Answers : ' + score
     print 'Incorrect Answers : ' + wrong
     print 'Accuracy : ' + accuracy
