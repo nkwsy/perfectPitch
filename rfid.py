@@ -79,13 +79,13 @@ def randomChoice(instrumentChoices, noteChoices, toneChoices):
 
 
 ########################################
-def postgresConnect
-    #Define our connection string 
-    conn_string = "host='ec2-54-225-182-108.compute-1.amazonaws.com' dbname='dn7gu1epio9d7' user='arwewokxwekuka' port='5432' password='5d98586ca671123e05b3e11dcc22fa59790fbffdb9476550af9ced849d19e507'"
-    # print the connection string we will use to connect
-    print "Connecting to database\n   ->%s" % (conn_string)
-    # get a connection, if a connect cannot be made an exception will be raised here
-    conn = psycopg2.connect(conn_string)
+# def postgresConnect:
+#     #Define our connection string 
+#     conn_string = "host='ec2-54-225-182-108.compute-1.amazonaws.com' dbname='dn7gu1epio9d7' user='arwewokxwekuka' port='5432' password='5d98586ca671123e05b3e11dcc22fa59790fbffdb9476550af9ced849d19e507'"
+#     # print the connection string we will use to connect
+#     print "Connecting to database\n   ->%s" % (conn_string)
+#     # get a connection, if a connect cannot be made an exception will be raised here
+#     conn = psycopg2.connect(conn_string)
 
 
 
