@@ -64,13 +64,14 @@ def randomChoice(instrumentChoices, noteChoices, toneChoices):
 
     assets.play(soundToPlay, instrumentToPlay)
     win = rfidread(cards[noteToPlay])
+
     if win == True:
         print 'great'
-        score += 1
-        print score
+        # score += 1
+        # print score
         return True
     else:
-        print random.choice(insult)
+        print bcolors.HEADER + random.choice(insult)
         # score -= 1
         return False
 
@@ -78,10 +79,18 @@ def randomChoice(instrumentChoices, noteChoices, toneChoices):
 
 
 ########################################
+def postgresConnect
+    #Define our connection string 
+    conn_string = "host='ec2-54-225-182-108.compute-1.amazonaws.com' dbname='dn7gu1epio9d7' user='arwewokxwekuka' port='5432' password='5d98586ca671123e05b3e11dcc22fa59790fbffdb9476550af9ced849d19e507'"
+    # print the connection string we will use to connect
+    print "Connecting to database\n   ->%s" % (conn_string)
+    # get a connection, if a connect cannot be made an exception will be raised here
+    conn = psycopg2.connect(conn_string)
 
 
 
-x = 2
+
+x = 3
 
 while x == 1:
 
@@ -131,7 +140,15 @@ while x == 3:
         noteChoices = ['C']
         toneChoices = ['4']
         
-        randomChoice(instrumentChoices, noteChoices, toneChoices)
+        result = randomChoice(instrumentChoices, noteChoices, toneChoices)
+        if result == True:
+            print 'great'
+            score += 1
+            print score
+        if result == False:
+            print random.choice(insult)
+            wrong += 1
+
 
     while score < 6:
 
@@ -139,8 +156,14 @@ while x == 3:
         noteChoices = ['C', 'D']
         toneChoices = ['4']
         
-        randomChoice(instrumentChoices, noteChoices, toneChoices)
-
+        result = randomChoice(instrumentChoices, noteChoices, toneChoices)
+        if result == True:
+            print 'great'
+            score += 1
+            print score
+        if result == False:
+            print random.choice(insult)
+            wrong += 1
     pass
 
 
