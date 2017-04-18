@@ -76,7 +76,7 @@ def randomChoice(instrumentChoices, noteChoices, toneChoices):
         return False
 
     #return score
-def answerRead(score, wrong)
+def answerRead(score, wrong):
     accuracy = (score/wrong)
     print 'Correct Answers : ' + score
     print 'Incorrect Answers : ' + wrong
