@@ -83,9 +83,9 @@ def answerRead(score, wrong):
     whole = score + wrong
     accuracy = percentage(score, whole)
 
-    print 'Correct Answers : ' + score
-    print 'Incorrect Answers : ' + wrong
-    print 'Accuracy : ' + accuracy
+    print 'Correct Answers : ' + str(score)
+    print 'Incorrect Answers : ' + str(wrong)
+    print 'Accuracy : ' + str(accuracy)
 
 
 
