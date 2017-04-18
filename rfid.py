@@ -68,11 +68,15 @@ def randomChoice(instrumentChoices, noteChoices, toneChoices):
         print 'great'
         score += 1
         print score
+        return True
     else:
         print random.choice(insult)
-        wrong += 1
+        # score -= 1
+        return False
 
     return score
+
+
 ########################################
 
 
@@ -120,11 +124,23 @@ while x == 2:
             wrong += 1
 
 while x == 3:
-    instrumentChoices = ['Flutenonvib']
-    noteChoices = ['C']
-    toneChoices = ['4']
-    
-    randomChoice(instrumentChoices, noteChoices, toneChoices)
+
+    while score < 3:
+
+        instrumentChoices = ['Flutenonvib']
+        noteChoices = ['C']
+        toneChoices = ['4']
+        
+        randomChoice(instrumentChoices, noteChoices, toneChoices)
+
+    while score < 6:
+
+        instrumentChoices = ['Flutenonvib']
+        noteChoices = ['C', 'D']
+        toneChoices = ['4']
+        
+        randomChoice(instrumentChoices, noteChoices, toneChoices)
+
     pass
 
 
