@@ -63,22 +63,34 @@ def play(note, instrument):
 	    data = f.readframes(frame_count)
 	    return (data, pyaudio.paContinue)
 	stream = p.open(format = pyaudio.paInt16, channels = 2, rate = 44100, frames_per_buffer = 2048, output = True, input = False, output_device_index = 0, stream_callback = callback)
-	#read data  
-	data = f.readframes(chunk)  
 
+	stream.start_stream()
 
+	while stream.is_active():
+	    time.sleep(0.1)
 
-	#play stream  
-	while data:  
-	    stream.write(data)  
-	    data = f.readframes(chunk)  
+	stream.stop_stream()
 
-	#stop stream  
-	stream.stop_stream()  
-	stream.close()  
+	stream.close()
 
-	#close PyAudio  
-	p.terminate()  
+	f.close()
+
+	p.terminate()
+	
+	# #read data  
+	# data = f.readframes(chunk)  
+
+	# #play stream  
+	# while data:  
+	#     stream.write(data)  
+	#     data = f.readframes(chunk)  
+
+	# #stop stream  
+	# stream.stop_stream()  
+	# stream.close()  
+
+	# #close PyAudio  
+	# p.terminate()  
 
 
 
