@@ -60,7 +60,7 @@ def play(note, instrument):
 	#                 rate = f.getframerate(),  
 	#                 output = True)  
 	def callback(in_data, frame_count, time_info, status):
-	    data = wf.readframes(frame_count)
+	    data = f.readframes(frame_count)
 	    return (data, pyaudio.paContinue)
 	stream = p.open(format = pyaudio.paInt16, channels = 2, rate = 44100, frames_per_buffer = 2048, output = True, input = False, output_device_index = 0, stream_callback = callback)
 	#read data  
