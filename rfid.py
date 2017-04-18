@@ -71,11 +71,17 @@ def randomChoice(instrumentChoices, noteChoices, toneChoices):
         # print score
         return True
     else:
-        print bcolors.HEADER + random.choice(insult)
+        print bcolors.FAIL + random.choice(insult) + bcolors.ENDC
         # score -= 1
         return False
 
-    return score
+    #return score
+def answerRead(score, wrong)
+    accuracy = (score/wrong)
+    print 'Correct Answers : ' + score
+    print 'Incorrect Answers : ' + wrong
+    print 'Accuracy : ' + accuracy
+
 
 
 ########################################
@@ -108,7 +114,7 @@ while x == 1:
         score += 1
     else:
         print random.choice(insult)
-    
+
 
 while x == 2:
     if score < 3:
@@ -142,12 +148,10 @@ while x == 3:
         
         result = randomChoice(instrumentChoices, noteChoices, toneChoices)
         if result == True:
-            print 'great'
             score += 1
-            print score
         if result == False:
-            print random.choice(insult)
             wrong += 1
+        def answerRead(score, wrong)
 
 
     while score < 6:
@@ -158,12 +162,52 @@ while x == 3:
         
         result = randomChoice(instrumentChoices, noteChoices, toneChoices)
         if result == True:
-            print 'great'
             score += 1
-            print score
         if result == False:
-            print random.choice(insult)
             wrong += 1
-    pass
+        def answerRead(score, wrong)
+
+
+    while score < 12:
+
+        instrumentChoices = ['Flutenonvib']
+        noteChoices = ['B', 'C', 'D']
+        toneChoices = ['4']
+        
+        result = randomChoice(instrumentChoices, noteChoices, toneChoices)
+        if result == True:
+            score += 1
+        if result == False:
+            wrong += 1
+        def answerRead(score, wrong)
+
+    while score < 24:
+
+        instrumentChoices = ['Flutenonvib', 'BbClarinet']
+        noteChoices = ['B', 'C', 'D', 'E']
+        toneChoices = ['4']
+        
+        result = randomChoice(instrumentChoices, noteChoices, toneChoices)
+        if result == True:
+            score += 1
+        if result == False:
+            wrong += 1
+        def answerRead(score, wrong)
+
+    
+    while score < 48:
+
+        instrumentChoices = ['Flutenonvib', 'BbClarinet', 'SopSaxVib']
+        noteChoices = ['B', 'C', 'D', 'E', 'F']
+        toneChoices = ['4']
+        
+        result = randomChoice(instrumentChoices, noteChoices, toneChoices)
+        if result == True:
+            score += 1
+        if result == False:
+            wrong += 1
+        def answerRead(score, wrong)
+
+    
 
 
