@@ -151,7 +151,7 @@ while x == 3:
             score += 1
         if result == False:
             wrong += 1
-        def answerRead(score, wrong)
+        answerRead(score, wrong)
 
 
     while score < 6:
@@ -165,7 +165,7 @@ while x == 3:
             score += 1
         if result == False:
             wrong += 1
-        def answerRead(score, wrong)
+        answerRead(score, wrong)
 
 
     while score < 12:
@@ -179,7 +179,7 @@ while x == 3:
             score += 1
         if result == False:
             wrong += 1
-        def answerRead(score, wrong)
+        answerRead(score, wrong)
 
     while score < 24:
 
@@ -192,7 +192,7 @@ while x == 3:
             score += 1
         if result == False:
             wrong += 1
-        def answerRead(score, wrong)
+        answerRead(score, wrong)
 
     
     while score < 48:
@@ -206,7 +206,7 @@ while x == 3:
             score += 1
         if result == False:
             wrong += 1
-        def answerRead(score, wrong)
+        answerRead(score, wrong)
 
     
 
