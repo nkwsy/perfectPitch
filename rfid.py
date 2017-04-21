@@ -170,7 +170,7 @@ while x == 2:
 
 while x == 3:
 
-    while level = 1:
+    while level == 1:
 
         instrumentChoices = ['Flutenonvib']
         noteChoices = ['C']
@@ -184,7 +184,7 @@ while x == 3:
         answerRead(score, wrong)
 
 
-    while level = 2:
+    while level == 2:
 
         instrumentChoices = ['Flutenonvib']
         noteChoices = ['C', 'D']
@@ -198,7 +198,7 @@ while x == 3:
         answerRead(score, wrong)
 
 
-    while level = 3:
+    while level == 3:
 
         instrumentChoices = ['Flutenonvib']
         noteChoices = ['B', 'C', 'D']
@@ -211,7 +211,7 @@ while x == 3:
             wrong += 1
         answerRead(score, wrong)
 
-    while level = 4:
+    while level == 4:
 
         instrumentChoices = ['Flutenonvib', 'BbClarinet']
         noteChoices = ['B', 'C', 'D', 'E']
@@ -225,7 +225,7 @@ while x == 3:
         answerRead(score, wrong)
 
     
-    while level = 5:
+    while level == 5:
 
         instrumentChoices = ['Flutenonvib', 'BbClarinet', 'SopSaxVib']
         noteChoices = ['B', 'C', 'D', 'E', 'F']
@@ -238,7 +238,7 @@ while x == 3:
             wrong += 1
         answerRead(score, wrong)
 
-    while level = 6:
+    while level == 6:
 
         instrumentChoices = instrument
         noteChoices = ['B', 'C', 'D', 'E', 'F', 'G']
@@ -251,7 +251,7 @@ while x == 3:
             wrong += 1
         answerRead(score, wrong)
     
-    while level = 7:
+    while level == 7:
 
         instrumentChoices = instrument
         noteChoices = ['A', 'B', 'C', 'D', 'E', 'F', 'G']
