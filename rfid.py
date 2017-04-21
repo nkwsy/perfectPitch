@@ -107,7 +107,7 @@ def answerRead(score, wrong):
         level = 7
     lvright = 'lv'+ str(level) + 'right'
     lvwrong = 'lv'+ str(level) + 'wrong'
-    updateScore(1, score, wrong, lvright, lvwrong )
+    user.updateScore(1, score, wrong, lvright, lvwrong )
 
 
     return level
