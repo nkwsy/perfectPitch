@@ -105,7 +105,9 @@ def answerRead(score, wrong):
         level = 6
     if score < 100:
         level = 7
-
+    lvright = 'lv'+ level + 'right'
+    lvwrong = 'lv'+ level + 'wrong'
+    updateScore(1, score, wrong, lvright, lvwrong )
 
 
     return level
@@ -124,6 +126,7 @@ def answerRead(score, wrong):
 
 
 x = 3
+level = 1
 
 while x == 1:
 
