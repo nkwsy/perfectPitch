@@ -12,6 +12,7 @@ from assets import bcolors
 from pirc522 import RFID
 from assets import rfidread
 import assets
+import user.py
 
 cards = {}
 cards['A'] = '23159'
@@ -61,7 +62,7 @@ def randomChoice(instrumentChoices, noteChoices, toneChoices):
     toneToPlay = random.choice(toneChoices)
     noteToPlay = random.choice(noteChoices)
     soundToPlay = noteToPlay + toneToPlay
-
+    
     assets.play(soundToPlay, instrumentToPlay)
     win = rfidread(cards[noteToPlay])
 
@@ -79,14 +80,35 @@ def randomChoice(instrumentChoices, noteChoices, toneChoices):
 
 def percentage(part, whole):
   return 100 * float(part)/float(whole)
+
+
 def answerRead(score, wrong):
     whole = score + wrong
     accuracy = percentage(score, whole)
+
 
     print 'Correct Answers : ' + str(score)
     print 'Incorrect Answers : ' + str(wrong)
     print 'Accuracy : ' + str(accuracy)
 
+    if score < 3:
+        level = 1
+    if score < 9:
+        level = 2
+    if score < 18:
+        level = 3
+    if score < 40:
+        level = 4
+    if score < 60:
+        level = 5
+    if score < 80:
+        level = 6
+    if score < 100:
+        level = 7
+
+
+
+    return level
 
 
 ########################################
@@ -145,7 +167,7 @@ while x == 2:
 
 while x == 3:
 
-    while score < 3:
+    while level = 1:
 
         instrumentChoices = ['Flutenonvib']
         noteChoices = ['C']
@@ -159,7 +181,7 @@ while x == 3:
         answerRead(score, wrong)
 
 
-    while score < 6:
+    while level = 2:
 
         instrumentChoices = ['Flutenonvib']
         noteChoices = ['C', 'D']
@@ -173,7 +195,7 @@ while x == 3:
         answerRead(score, wrong)
 
 
-    while score < 12:
+    while level = 3:
 
         instrumentChoices = ['Flutenonvib']
         noteChoices = ['B', 'C', 'D']
@@ -186,7 +208,7 @@ while x == 3:
             wrong += 1
         answerRead(score, wrong)
 
-    while score < 24:
+    while level = 4:
 
         instrumentChoices = ['Flutenonvib', 'BbClarinet']
         noteChoices = ['B', 'C', 'D', 'E']
@@ -200,7 +222,7 @@ while x == 3:
         answerRead(score, wrong)
 
     
-    while score < 48:
+    while level = 5:
 
         instrumentChoices = ['Flutenonvib', 'BbClarinet', 'SopSaxVib']
         noteChoices = ['B', 'C', 'D', 'E', 'F']
@@ -213,6 +235,29 @@ while x == 3:
             wrong += 1
         answerRead(score, wrong)
 
-    
+    while level = 6:
 
+        instrumentChoices = instrument
+        noteChoices = ['B', 'C', 'D', 'E', 'F', 'G']
+        toneChoices = ['4']
+        
+        result = randomChoice(instrumentChoices, noteChoices, toneChoices)
+        if result == True:
+            score += 1
+        if result == False:
+            wrong += 1
+        answerRead(score, wrong)
+    
+    while level = 7:
+
+        instrumentChoices = instrument
+        noteChoices = ['A', 'B', 'C', 'D', 'E', 'F', 'G']
+        toneChoices = ['4']
+        
+        result = randomChoice(instrumentChoices, noteChoices, toneChoices)
+        if result == True:
+            score += 1
+        if result == False:
+            wrong += 1
+        answerRead(score, wrong)
 
