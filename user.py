@@ -37,7 +37,6 @@ def updateScore(id2, right, wrong, lvright, lvwrong):
 					WHERE id = %(id)s """, {'id': id2, 'right': right, 'wrong' : wrong, 'lvright' : lvright, 'lvwrong': lvwrong})
 	conn.commit()
 
-	cursor.execute("""SELECT Score FROM score WHERE Name = %(player)s""", {'player': player_name } )
 # def updateScore(id2, cscore):
 # 	conn = postgresConnect()
 # 	cur = conn.cursor()
