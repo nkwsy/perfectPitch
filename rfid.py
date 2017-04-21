@@ -12,7 +12,7 @@ from assets import bcolors
 from pirc522 import RFID
 from assets import rfidread
 import assets
-import user.py
+import user
 
 cards = {}
 cards['A'] = '23159'
@@ -168,6 +168,7 @@ while x == 2:
             print random.choice(insult)
             wrong += 1
 
+##### TODO add result to answer read. This gives layout of note tested
 while x == 3:
 
     while level == 1:
